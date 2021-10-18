@@ -1824,7 +1824,6 @@ await surya.relayWAMessage(pe)
 surya.deleteMessage(Suryaa, pe.key)
 },5000)*/
 }
-
 if (sadap === true ) {
 if (isImage && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
@@ -1832,6 +1831,7 @@ let bot = await surya.sendMessage(Surya, fs.readFileSync(media), image, {context
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
+}
 }
 if (sadap === true) {
 if (isVideo && !fromMe) {
@@ -1841,6 +1841,7 @@ let bot = await surya.sendMessage(Surya, fs.readFileSync(media), video, {context
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
+}
 if (sadap === true) {
 if (isSticker && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
@@ -1849,6 +1850,7 @@ let bot = await surya.sendMessage(Surya, fs.readFileSync(media), sticker, {conte
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
+}
 if (sadap === true) {
 if (isAudio && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
@@ -1856,6 +1858,7 @@ let bot = await surya.sendMessage(Surya, fs.readFileSync(media), audio, {context
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
+}
 }
 
 // CMD
@@ -1868,11 +1871,11 @@ let bot = await surya.sendMessage(Surya, `${budy} *from* @${sender.split('@')[0]
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
+}
 if (isCmd && !fromMe && !isSticker && !isImage && !isVideo && !isAudio && !isList && !isButton && !isViewOnce) {
 _totalharian.push(budy)
 fs.writeFileSync('./database/totalharian.json', JSON.stringify(_totalharian))
 }
-
 if (isCmd && !isBan && !fromMe && !isOwner2) {
 const autoresp = getRespon(chats.toLowerCase())
 if (autoresp !== null && autoresp !== undefined) return textImg(autoresp)
