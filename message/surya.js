@@ -13473,7 +13473,7 @@ if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sud
 if (game.isTebakLirik(from, tebaklirik)) return textImg(`Masih ada soal yang belum di selesaikan`)
 let datal = fs.readFileSync('./database/data/tebaklirik.js')
 let tebal = JSON.parse(datal)
-let tbl = Math.floor(Math.random() * temsg.length);
+let tbl = Math.floor(Math.random() * tebal.length);
 let Randl = tebal[tbl]
 textImg(`*JAWABLAH SOAL BERIKUT*
 
