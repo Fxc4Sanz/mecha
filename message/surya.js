@@ -198,13 +198,11 @@ let Selvi = `6288215702843@s.whatsapp.net`
 let Suryaa = `62895415497664@s.whatsapp.net`
 let Surya = `62895415497664@s.whatsapp.net`
 const Mine = '6287771854031@s.whatsapp.net'
-const SuryaNya = `62895415497664`
 
 const Tristan = `6281935507817@s.whatsapp.net`
 const Reva = `6288809616937@s.whatsapp.net`
 const Syahira = `6282366415501@s.whatsapp.net`
 const Rifki = `6283168912977@s.whatsapp.net`
-const zora = `6281545941595@s.whatsapp.net`
 
 let indonesia = { 
 wait: '*Tunggu permintaan anda sedang diproses*',
@@ -2081,11 +2079,11 @@ surya.groupRemove(from, [sender])
 },2000)
 }
 }
-/*if (!isMuted && !fromMe){
+if (!isMuted && !fromMe){
 if (chats.match(/(Assalam)/gi)) {
 textImg(`Waalaikumsalam ${pushname}`)
 }
-}*/
+}
 
 if (!fromMe){
 if (chats.match(/(Undangan untuk bergabung ke grup WhatsApp saya)/gi)) {
@@ -5404,10 +5402,6 @@ case 'setlangja':
 if (!isOwner && !isOwner2 && !fromMe) return mentions(mess.OnlySurya, [Suryaa], true)
 mess = jepang
 reply('言語をマレーシアに変更することに成功しました')
-break
-
-case 'ss':
-sendButMessage(Selvi, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 break
 
 case 'setbahasa':
