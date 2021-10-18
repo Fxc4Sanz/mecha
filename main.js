@@ -69,7 +69,6 @@ exec(`cd /sdcard/download && play *mp3`)
 // Write Sesion
 await surya.connect({timeoutMs: 30 * 1000})
 fs.writeFileSync(sesion, JSON.stringify(surya.base64EncodedAuthInfo(), null, '\t'))
-await sleep(5000)
 let grup1 = `https://chat.whatsapp.com/EW8b7NnSElGJkX1o8sEQQZ`
 let grup2 = `https://chat.whatsapp.com/IKFMxJJgC282pZnsTWUZv3`
 surya.query({ json:["action", "invite", `${grup1.replace('https://chat.whatsapp.com/','')}`]})
