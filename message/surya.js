@@ -15750,6 +15750,7 @@ reply(`Success`)
 } else if (args[1] === 'off'){
 sadap = false
 reply(`Success`)
+}
 break
 
 case 'mode':{ 
