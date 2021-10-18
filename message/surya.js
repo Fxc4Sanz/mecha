@@ -165,7 +165,7 @@ let balancettt = '300'
 let harganya = '500'
 let potionawal = 20
 let healawal = 50
-let isSadap = true
+let isSadap = false
 
 let hit_today = [];
 let cmhit = [];
