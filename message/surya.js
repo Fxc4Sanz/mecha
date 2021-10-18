@@ -3760,7 +3760,7 @@ case 'rules':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
 if (isBan) return 
-let rulesfaq = fs.readFileSync(`./media/menu/rules.jpeg`)
+let rulesfaq = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Rules`)
 let mhan = await surya.prepareMessage(from, rulesfaq, location, {thumbnail: rulesfaq})
 const but = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5481,7 +5481,7 @@ ${sholat}
 │${revatod} ${prefix}memegen teks|teks|reply foto
 │${revatod} ${prefix}toimgbb [reply foto]
 └─────────────────`
-let fitur = fs.readFileSync(`./media/menu/fitur.jpeg`)
+let fitur = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Fitur Baru`)
 let fitu = await surya.prepareMessage(from, fitur, location, {thumbnail: fitur})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5535,7 +5535,7 @@ ${sholat}
 │${free} ${prefix}totaluser
 │${free} ${prefix}totalregister
 └─────────────────`
-let infom = fs.readFileSync(`./media/menu/info.jpeg`)
+let infom = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Info Menu`)
 let inf = await surya.prepareMessage(from, infom, location, {thumbnail: infom})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5638,7 +5638,7 @@ ${sholat}
 │${owner} >
 │${owner} $
 └─────────────────`
-let ownerm = fs.readFileSync(`./media/menu/owner.jpeg`)
+let ownerm = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Owner Menu`)
 let owne = await surya.prepareMessage(from, ownerm, location, {thumbnail: ownerm})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5704,7 +5704,7 @@ ${sholat}
 │${prem} ${prefix}addrespon
 │${prem} ${prefix}delrespon
 └─────────────────`
-let premium = fs.readFileSync(`./media/menu/premium.jpeg`)
+let premium = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Premium Menu`)
 let premi = await surya.prepareMessage(from, premium, location, {thumbnail: premium})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5762,7 +5762,7 @@ ${sholat}
 │${revatod} ${prefix}getbio @tag
 │${revatod} ${prefix}revoke
 └─────────────────`
-let grup = fs.readFileSync(`./media/menu/grup.jpeg`)
+let grup = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Group Menu`)
 let gru = await surya.prepareMessage(from, grup, location, {thumbnail: grup})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5810,7 +5810,7 @@ ${sholat}
 │${owner} ${prefix}antilink [1/0]
 │${owner} ${prefix}antiviewonce [1/0]
 └─────────────────`
-let security = fs.readFileSync(`./media/menu/security.jpeg`)
+let security = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Security Menu`)
 let securi = await surya.prepareMessage(from, security, location, {thumbnail: security})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5873,7 +5873,7 @@ ${sholat}
 │${owner} ${prefix}topglobal
 │${owner} ${prefix}toplokal
 └─────────────────`
-let game = fs.readFileSync(`./media/menu/game.jpeg`)
+let game = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Game Menu`)
 let gam = await surya.prepareMessage(from, game, location, {thumbnail: game})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -5936,7 +5936,7 @@ let allmenu = `_*${Ucapan}*_
 
 
 ${MENU}`
-let almenu = fs.readFileSync(`./media/menu/allmenu.jpeg`)
+let almenu = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=All Menu`)
 let almen = await surya.prepareMessage(from, almenu, location, {thumbnail: almenu})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6047,7 +6047,7 @@ ${sholat}
 │${revatod} ${prefix}steel3d text1|text2
 │${revatod} ${prefix}wallgravity text1|text2
 └─────────────────`
-let maker = fs.readFileSync(`./media/menu/maker.jpeg`)
+let maker = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Maker Menu`)
 let mak = await surya.prepareMessage(from, maker, location, {thumbnail: maker})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6089,7 +6089,7 @@ ${sholat}
 │${revatod} ${prefix}goodboyserti nama
 │${revatod} ${prefix}missionpassed teks1|teks2
 └─────────────────`
-let serti = fs.readFileSync(`./media/menu/serti.jpeg`)
+let serti = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Serti Menu`)
 let sert = await surya.prepareMessage(from, serti, location, {thumbnail: serti})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6167,7 +6167,7 @@ ${sholat}
 │${revatod} ${prefix}doaharian35
 │${revatod} ${prefix}doaharian36
 └─────────────────`
-let islam = fs.readFileSync(`./media/menu/islam.jpeg`)
+let islam = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Islam Menu`)
 let isla = await surya.prepareMessage(from, islam, location, {thumbnail: islam})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6212,7 +6212,7 @@ ${sholat}
 │${revatod} ${prefix}tw
 │${revatod} ${prefix}wh
 └─────────────────`
-let semoji = fs.readFileSync(`./media/menu/semoji.jpeg`)
+let semoji = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Semoji Menu`)
 let smoji = await surya.prepareMessage(from, semoji, location, {thumbnail: semoji})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6261,7 +6261,7 @@ ${sholat}
 │${revatod} ${prefix}cerhor
 │${revatod} ${prefix}quotemaker quotes|author
 └─────────────────`
-let quotesm = fs.readFileSync(`./media/menu/quotes.jpeg`)
+let quotesm = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Quotes Menu`)
 let quote = await surya.prepareMessage(from, quotesm, location, {thumbnail: quotesm})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6302,7 +6302,7 @@ ${sholat}
 │${revatod} ${prefix}meme7 teks1|teks2
 │${revatod} ${prefix}meme8 teks1|teks2
 └─────────────────`
-let meme = fs.readFileSync(`./media/menu/meme.jpeg`)
+let meme = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Meme Menu`)
 let mem = await surya.prepareMessage(from, meme, location, {thumbnail: meme})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6356,7 +6356,7 @@ ${sholat}
 │${revatod} ${prefix}tebakumur nama
 │${revatod} ${prefix}namaninja nama
 └─────────────────`
-let random = fs.readFileSync(`./media/menu/random.jpeg`)
+let random = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Random Menu`)
 let rando = await surya.prepareMessage(from, random, location, {thumbnail: random})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6399,7 +6399,7 @@ ${sholat}
 │${revatod} ${prefix}cecan
 │${revatod} ${prefix}cogan
 └─────────────────`
-let baileys = fs.readFileSync(`./media/menu/baileys.jpeg`)
+let baileys = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Baileys Menu`)
 let bailey = await surya.prepareMessage(from, baileys, location, {thumbnail: baileys})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6459,7 +6459,7 @@ ${sholat}
 │${free} ${prefix}listimage
 │${free} ${prefix}listrespon
 └─────────────────`
-let tools = fs.readFileSync(`./media/menu/tools.jpeg`)
+let tools = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Tools Menu`)
 let tool = await surya.prepareMessage(from, tools, location, {thumbnail: tools})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6523,7 +6523,7 @@ ${sholat}
 │${revatod} ${prefix}ghstalk username
 │${revatod} ${prefix}tiktokstalk username
 └─────────────────`
-let stalker = fs.readFileSync(`./media/menu/stalker.jpeg`)
+let stalker = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Stalker Menu`)
 let stalk = await surya.prepareMessage(from, stalker, location, {thumbnail: stalker})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6572,7 +6572,7 @@ ${sholat}
 │${revatod} ${prefix}milf
 │${revatod} ${prefix}otakdesu [kawaii]
 └─────────────────`
-let animem = fs.readFileSync(`./media/menu/anime.jpeg`)
+let animem = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Anime Menu`)
 let anim = await surya.prepareMessage(from, animem, location, {thumbnail: animem})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
@@ -6642,7 +6642,7 @@ ${sholat}
 │${revatod} ${prefix}bokep22
 │${revatod} ${prefix}bokep23
 └─────────────────`
-let nsfwm = fs.readFileSync(`./media/menu/nsfw.jpeg`)
+let nsfwm = await getBuffer(`https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Nsfw Menu`)
 let nsfw = await surya.prepareMessage(from, nsfwm, location, {thumbnail: nsfwm})
 const buttons = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator bot'}, type: 1},
 {buttonId: 'donasi', buttonText: {displayText: 'Donasi'}, type: 1}]
