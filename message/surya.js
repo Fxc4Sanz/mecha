@@ -1824,53 +1824,45 @@ await surya.relayWAMessage(pe)
 surya.deleteMessage(Suryaa, pe.key)
 },5000)*/
 }
-if (sadap === true ) {
-if (isImage && !fromMe) {
+if (sadap === true && isImage && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), image, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, msg, caption: `${command} ${q} *from* @${sender.split('@')[0]} ${groupName}`})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
-}
-if (sadap === true) {
-if (isVideo && !fromMe) {
+if (sadap === true && isVideo && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), video, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, msg, caption: `${command} ${q} *from* @${sender.split('@')[0]} ${groupName}`})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
-}
-if (sadap === true) {
-if (isSticker && !fromMe) {
+if (sadap === true && isSticker && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), sticker, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, quoted: {key: {fromMe: false, participant: '0@s.whatsapp.net', ...(from ? {remoteJid: from} : {})}, message: {conversation: `_*Pesan sticker dari*_ ${pushname} _*di*_ ${groupName}`}}})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
-}
-if (sadap === true) {
-if (isAudio && !fromMe) {
+if (sadap === true && isAudio && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), audio, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, quoted: {key: {fromMe: false, participant: '0@s.whatsapp.net', ...(from ? {remoteJid: from} : {})}, message: {conversation: `_*Pesan audio dari*_ ${pushname} _*di*_ ${groupName}`}}})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
-}
 
 // CMD
 if (isCmd && !isSticker && !isVideo && !isAudio && !isList && !isButton && !isViewOnce) {
 addBalance(sender, randomNomor(100), balance)
 console.log(color('[CMD]'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YYYY HH:mm:ss'), 'cyan'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(groupName))
-if (sadap === true) {
+}
+if (sadap === true && isCmd && !isSticker && !isVideo && !isAudio && !isList && !isButton && !isViewOnce) {
 let bot = await surya.sendMessage(Surya, `${budy} *from* @${sender.split('@')[0]} ${groupName}`, text, {thumbnail: suryaImg, sendEphemeral: true, msg, contextInfo : {mentionedJid: [Surya, sender], forwardingScore: 100, isForwarded: true}})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
-}
 }
 if (isCmd && !fromMe && !isSticker && !isImage && !isVideo && !isAudio && !isList && !isButton && !isViewOnce) {
 _totalharian.push(budy)
