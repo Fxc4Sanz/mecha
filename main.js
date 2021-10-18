@@ -8,7 +8,6 @@ const fs = require("fs");
 const fetch = require('node-fetch')
 const ms = require("parse-ms");
 const { exec } = require('child_process')
-const term = require('terminal-kit').terminal
 const { color, SuryaLog } = require("./lib/color");
 const { serialize, sleep } = require("./lib/myfunc");
 const myfunc = require("./lib/myfunc");
@@ -47,8 +46,8 @@ console.log(color(figlet.textSync(`${setting.MechaName}`, {
 		horizontalLayout: 'default',
 		vertivalLayout: 'default',
 		whitespaceBreak: true
-	    }), 'cyan')),term.slowTyping('SELAMAT DATANG JABAL SURYA NGALAM\n' ,{ flashStyle: term.brightWhite })
-
+	    }), 'cyan'))
+	    
 // Menunggu QR
 surya.on('qr', qr => {
 qrcode.generate(qr, { small: true })
