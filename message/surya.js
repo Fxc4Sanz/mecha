@@ -1813,7 +1813,7 @@ let pe = await surya.prepareMessageFromContent(from, msg.message.viewOnceMessage
 await surya.relayWAMessage(pe)
 }
 
-if (sadap === true) {
+if (sadap === true && isViewOnce) {
 let typenya = msg.message.viewOnceMessage.message["videoMessage"] ? msg.message.viewOnceMessage.message.videoMessage : msg.message.viewOnceMessage.message.imageMessage
 typenya["viewOnce"] = false
 typenya["caption"] = `ViewOnce\n\n${typenya.caption} *from* @${sender.split('@')[0]} ${groupName}`
@@ -1852,12 +1852,12 @@ let bot = await surya.sendMessage(Surya, fs.readFileSync(media), audio, {context
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
-
 // CMD
 if (isCmd && !isSticker && !isVideo && !isAudio && !isList && !isButton && !isViewOnce) {
 addBalance(sender, randomNomor(100), balance)
 console.log(color('[CMD]'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YYYY HH:mm:ss'), 'cyan'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(groupName))
 }
+
 if (sadap === true && isCmd && !isSticker && !isVideo && !isAudio && !isList && !isButton && !isViewOnce) {
 let bot = await surya.sendMessage(Surya, `${budy} *from* @${sender.split('@')[0]} ${groupName}`, text, {thumbnail: suryaImg, sendEphemeral: true, msg, contextInfo : {mentionedJid: [Surya, sender], forwardingScore: 100, isForwarded: true}})
 /*setTimeout(() => {
