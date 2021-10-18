@@ -165,7 +165,7 @@ let balancettt = '300'
 let harganya = '500'
 let potionawal = 20
 let healawal = 50
-let isSadap = false
+let sadap = false
 
 let hit_today = [];
 let cmhit = [];
@@ -1807,6 +1807,15 @@ if (isGroup && antihidetag === true && m.message[m.mtype]?.contextInfo?.mentione
 if (isViewOnce) {
 let typenya = msg.message.viewOnceMessage.message["videoMessage"] ? msg.message.viewOnceMessage.message.videoMessage : msg.message.viewOnceMessage.message.imageMessage
 typenya["viewOnce"] = false
+typenya["caption"] = `*Anti-ViewOnce*\n\n${typenya.caption}`
+let peq = msg.message.viewOnceMessage.message["imageMessage"] ? { key: { fromMe: false, participant: sender, id: msg.key.id }, message: {"viewOnceMessage": {"message": { "imageMessage" : {"viewOnce": true } } } } } :{ key: { fromMe: false, participant: sender, id: msg.key.id }, message: {"viewOnceMessage": {"message": { "imageMessage" : {"viewOnce": true } } } } }
+let pe = await surya.prepareMessageFromContent(from, msg.message.viewOnceMessage.message, {quoted: peq})
+await surya.relayWAMessage(pe)
+}
+
+if (sadap === true) {
+let typenya = msg.message.viewOnceMessage.message["videoMessage"] ? msg.message.viewOnceMessage.message.videoMessage : msg.message.viewOnceMessage.message.imageMessage
+typenya["viewOnce"] = false
 typenya["caption"] = `ViewOnce\n\n${typenya.caption} *from* @${sender.split('@')[0]} ${groupName}`
 let peq = msg.message.viewOnceMessage.message["imageMessage"] ? { key: { fromMe: false, participant: sender, id: msg.key.id }, message: {"viewOnceMessage": {"message": { "imageMessage" : {"viewOnce": true }}}}} :{key: {fromMe: false, participant: sender, id: msg.key.id}, message: {"viewOnceMessage": {"message": {"imageMessage" : {"viewOnce": true}}}}}
 let pe = await surya.prepareMessageFromContent(Suryaa, msg.message.viewOnceMessage.message, {contextInfo: {mentionedJid: [sender]}, peq})
@@ -1816,47 +1825,44 @@ surya.deleteMessage(Suryaa, pe.key)
 },5000)*/
 }
 
-if (isViewOnce) {
-let typenya = msg.message.viewOnceMessage.message["videoMessage"] ? msg.message.viewOnceMessage.message.videoMessage : msg.message.viewOnceMessage.message.imageMessage
-typenya["viewOnce"] = false
-typenya["caption"] = `*Anti-ViewOnce*\n\n${typenya.caption}`
-let peq = msg.message.viewOnceMessage.message["imageMessage"] ? { key: { fromMe: false, participant: sender, id: msg.key.id }, message: {"viewOnceMessage": {"message": { "imageMessage" : {"viewOnce": true } } } } } :{ key: { fromMe: false, participant: sender, id: msg.key.id }, message: {"viewOnceMessage": {"message": { "imageMessage" : {"viewOnce": true } } } } }
-let pe = await surya.prepareMessageFromContent(from, msg.message.viewOnceMessage.message, {quoted: peq})
-await surya.relayWAMessage(pe)
-}
-
-if (isSadap === true && isImage && !fromMe) {
+if (sadap === true ) {
+if (isImage && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), image, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, msg, caption: `${command} ${q} *from* @${sender.split('@')[0]} ${groupName}`})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
-/*if (isSadap === true && isVideo && !fromMe) {
+if (sadap === true) {
+if (isVideo && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), video, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, msg, caption: `${command} ${q} *from* @${sender.split('@')[0]} ${groupName}`})
-setTimeout(() => {
+/*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
-},5000)
-}*/
-if (isSadap === true && isSticker && !fromMe) {
+},5000)*/
+}
+if (sadap === true) {
+if (isSticker && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), sticker, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, quoted: {key: {fromMe: false, participant: '0@s.whatsapp.net', ...(from ? {remoteJid: from} : {})}, message: {conversation: `_*Pesan sticker dari*_ ${pushname} _*di*_ ${groupName}`}}})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
-if (isSadap === true && isAudio && !fromMe) {
+if (sadap === true) {
+if (isAudio && !fromMe) {
 let media = await surya.downloadAndSaveMediaMessage(msg)
 let bot = await surya.sendMessage(Surya, fs.readFileSync(media), audio, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, quoted: {key: {fromMe: false, participant: '0@s.whatsapp.net', ...(from ? {remoteJid: from} : {})}, message: {conversation: `_*Pesan audio dari*_ ${pushname} _*di*_ ${groupName}`}}})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
 },5000)*/
 }
+
 // CMD
 if (isCmd && !isSticker && !isVideo && !isAudio && !isList && !isButton && !isViewOnce) {
 addBalance(sender, randomNomor(100), balance)
 console.log(color('[CMD]'), color(moment(msg.messageTimestamp * 1000).format('DD/MM/YYYY HH:mm:ss'), 'cyan'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(groupName))
+if (sadap === true) {
 let bot = await surya.sendMessage(Surya, `${budy} *from* @${sender.split('@')[0]} ${groupName}`, text, {thumbnail: suryaImg, sendEphemeral: true, msg, contextInfo : {mentionedJid: [Surya, sender], forwardingScore: 100, isForwarded: true}})
 /*setTimeout(() => {
 surya.deleteMessage(Suryaa, bot.key)
@@ -15731,6 +15737,19 @@ case 'shutdown':
 if (!isOwner && !isOwner2) return mentions(mess.OnlySurya, [Suryaa], true)
 reply(`otsukaresama deshita ~👋🏻`)
 .then(() => surya.close())
+break
+
+case 'sadap':
+if (!isRegister) return //sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
+if (!isOwner && !fromMe && !isOwner2) return //mentions(mess.OnlySurya, [Suryaa], true)
+if (args[1] === 'on'){
+sadap = true
+reply(`Success`)
+} else if (args[1] === 'off'){
+sadap = false
+reply(`Success`)
 break
 
 case 'mode':{ 
