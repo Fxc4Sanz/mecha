@@ -18,9 +18,9 @@ Script Botz WhatsApp Pintar Mecha Botz
 </p>
 
 <p align="center">
-  <a href="https://github.com/Jabalsurya2105/MechaBotz#requirements">Requirements</a> •
-  <a href="https://github.com/Jabalsurya2105/MechaBotz#instalasi">Installation</a> •
-  <a href="https://github.com/Jabalsurya2105/MechaBotz#thanks-to">Thanks to</a>
+  <a href="https://github.com/Jabalsurya2105/MechaBot#requirements">Requirements</a> •
+  <a href="https://github.com/Jabalsurya2105/MechaBot#instalasi">Installation</a> •
+  <a href="https://github.com/Jabalsurya2105/MechaBot#thanks-to">Thanks to</a>
 </p>
 </div>
 
@@ -40,8 +40,8 @@ Script Botz WhatsApp Pintar Mecha Botz
 termux-setup-storage
 apt update && apt upgrade
 pkg install nodejs git ffmpeg libwebp imagemagick
-git clone https://github.com/Jabalsurya2105/MechaBotz
-cd MechaBotz
+git clone https://github.com/Jabalsurya2105/MechaBot
+cd MechaBot
 npm install
 node main
 ```
@@ -52,11 +52,10 @@ node main
 
 # Thanks to
 * Allah SWT
-* Ortu
+* Mamah
 * Surya ( gua )
-* Bestie
-* Adek
-* Pacar
-* Temen
+* Hilya
+* Vinna
+* Natalia
 * WhatsApp
-* Member grup gw
+* Member grup gua
