@@ -2081,7 +2081,7 @@ surya.groupRemove(from, [sender])
 }
 if (!isMuted && !fromMe){
 if (chats.match(/(Assalam)/gi)) {
-textImg(`Waalaikumsalam ${pushname}`)
+surya.sendMessage(from, `Waalaikumsalam @${sender.split('@')[0]}`, text, {thumbnail: suryaImg, sendEphemeral: true, quoted:msg, contextInfo : {mentionedJid: [sender], forwardingScore: 100, isForwarded: true}})
 }
 }
 
