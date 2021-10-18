@@ -59,13 +59,19 @@ fs.existsSync(sesion) && surya.loadAuthInfo(sesion)
 
 // Mencoba menghubungkan
 surya.on('connecting', () => {
-console.log(color('CONNECTING....', 'cyan'))
+console.log(color('Connecting....', 'cyan'))
 })
 
 if (autoplaymusic === true) {
 exec(`cd /sdcard/download && play *mp3`)
 //console.log(color('|MUSIC|', 'cyan'), color('Memulai Memutar Lagu...', 'cyan'))
 }
+
+// Konek
+surya.on('open', (json) => {
+console.log(color('Connected, Welcome Sayank', 'cyan'))
+})
+
 // Write Sesion
 await surya.connect({timeoutMs: 30 * 1000})
 fs.writeFileSync(sesion, JSON.stringify(surya.base64EncodedAuthInfo(), null, '\t'))
@@ -86,11 +92,6 @@ surya.sendMessage(Suryaa, `
 \`\`\`${bu}\`\`\``, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title: "Creator Mecha Botz",body:"",previewType:"PHOTO",thumbnail:fs.readFileSync('./media/Rya.jpg'),sourceUrl:"https://wa.me/62895415497664?text=Assalamualaikum"}}})
 console.log(color('|MECHA|', 'cyan'), color('Mengirim IP address Ke Creator Bot Surya', 'cyan'))
    })
-
-// Konek
-surya.on('open', (json) => {
-console.log(SuryaLog('Connected, Welcome Sayank'))
-})
 
 // Ya gitulah
 surya.on('ws-close', () => {
