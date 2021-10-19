@@ -13755,22 +13755,29 @@ if (isBan) return
 if (!isGroup)return reply(mess.OnlyGrup)
 if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sudah habis`)
 if (game.isTebakLagu(from, tebaklagu)) return textImg(`Masih ada soal yang belum di selesaikan`)
-let get_res = await fetchJson(`https://api.xteam.xyz/game/tebaklagu?apikey=kurrxd09&id=4mFuArYRh3SO8jfffYLSER`)
-let get_resul = get_res.result
-let ini_audio = get_resul.preview
-let jawaban = get_resul.judul
-let kisi_kisi = jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')
-let ini_buffer = await getBuffer(ini_audio)
+let res1 = await axios.get(`https://api.xteam.xyz/game/tebaklagu?apikey=kurrxd09&id=4mFuArYRh3SO8jfffYLSER`) 
+let kisi2 = res1.data.result.judul.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')
 textImg(`${S}Game Tebak Lagu${S}
 
-Petunjuk : ${kisi_kisi}
+Petunjuk : ${kisi2}
 Waktu : ${gamewaktu}s`)
-surya.sendMessage(from, ini_buffer, audio, {quoted: msg})
-let anal = jawaban.toLowerCase()
+sendFileFromUrl(from, res1.data.result.preview, {contextInfo: {forwardingScore: 100, isForwarded: true}, quoted:msg})
+//surya.sendMessage(from, await getBuffer(res1.result.data.preview), audio, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, quoted:msg})
+let anal = res1.data.result.judul.toLowerCase()
 game.addlagu(from, anal, gamewaktu, tebaklagu)
 gameAdd(sender, glimit)
 }
 break
+
+case 'canceltebaklagu':
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
+if (!isGroup)return reply(mess.OnlyGrup)
+tebaklagu.splice(game.getTLGPosi(from, tebaklagu), 1)
+textImg(`Success mengcancel game tebak lagu sebelumnya`)
+break
+
 case 'tebakanime': case 'ta':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
