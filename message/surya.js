@@ -138,6 +138,7 @@ let tebakgambar = [];
 let family100 = [];
 let caklontong = [];
 let tebaklirik = [];
+let tebaklagu = [];
 let tebakjenaka = [];
 let siapaaku = [];
 let asahotak = [];
@@ -207,7 +208,7 @@ const Rifki = `6283168912977@s.whatsapp.net`
 let indonesia = { 
 wait: '*Tunggu permintaan anda sedang diproses*',
 success: 'Sukses',
-error: { lv: 'Link yang kamu berikan tidak valid', api: 'Maaf terjadi kesalahan' },
+error: { lv: 'Link yang kamu berikan tidak valid', api: 'Maaf terjadi kesalahan!\n\nbeberapa fitur error karena bot ini berjalan dirailway bukan ditermux.' },
 OnlyGrup: 'Perintah ini hanya bisa digunakan di grup',
 OnlyPM: 'Perintah ini hanya bisa digunakan di private message',
 GrupAdmin: 'Perintah ini hanya bisa digunakan oleh Admin Grup',
@@ -2553,6 +2554,7 @@ cekWaktuFam(surya, family100)
 game.cekWaktuTG(surya, tebakgambar)
 game.cekWaktuCak(surya, caklontong)
 game.cekWaktuTL(surya, tebaklirik)
+game.cekWaktuTLG(surya, tebaklagu)
 game.cekWaktuSA(surya, siapaaku)
 game.cekWaktuTS(surya, tebakjenaka)
 game.cekWaktuAO(surya, asahotak)
@@ -2564,6 +2566,29 @@ game.cekWaktuTKAL(surya, tebakkalimat)
 game.cekWaktuTT(surya, tekateki)
 game.cekWaktuSK(surya, susunkata)
 game.cekWaktuMtk(surya, mtk)
+
+if (game.isTebakLagu(from, tebaklagu) && !isBan && isUser){
+if (chats.toLowerCase().includes(game.getJawabanTLG(from, tebaklagu))){
+var htlg = randomNomor(`${balanc}`)
+addBalance(sender, htlg, balance)
+const buttons = [{buttonId: 'tebaklagu;', buttonText: {displayText: 'Lanjut ➡️'}, type: 1}]
+const buttonsMessage = {
+contentText: `𝗚𝗔𝗠𝗘 𝗧𝗘𝗕𝗔𝗞 𝗟𝗔𝗚𝗨
+
+_*Selamat jawaban kamu benar*_
+*Jawaban :* ${game.getJawabanTLG(from, tebaklagu)}
+*Hadiah :* $${htlg}
+
+Ingin bermain lagi? *tekan tombol dibawah*`,
+footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.split('@')[0]}`,
+buttons: buttons,
+headerType: 1
+}
+surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
+contextInfo: {mentionedJid: [Suryaa, sender]}, quoted: msg})
+tebaklagu.splice(game.getTLGPosi(from, tebaklagu), 1)
+}
+}
 
 if (game.isSusunKata(from, susunkata) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanSK(from, susunkata))){
@@ -8262,7 +8287,7 @@ reply(`Blum support sticker gif :/`)
 let ran = getRandom('.png')
 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 fs.unlinkSync(media)
-if (err) return reply('Gagal :V')
+if (err) return reply(mess.error.api)
 surya.sendMessage(from, fs.readFileSync(ran), image, {quoted: msg, caption: `Nih ${pushname}`})
 limitAdd(sender,limit)
 fs.unlinkSync(ran)
@@ -13723,7 +13748,29 @@ game.addkimia(from, revasayank, gamewaktu, tebakkimia)
 gameAdd(sender, glimit)
 }
 break
+case 'tebaklagu': case 'tlagu':{
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
+if (!isGroup)return reply(mess.OnlyGrup)
+if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sudah habis`)
+if (game.isTebakLagu(from, tebaklagu)) return textImg(`Masih ada soal yang belum di selesaikan`)
+let get_res = await fetchJson(`https://api.xteam.xyz/game/tebaklagu?apikey=kurrxd09&id=4mFuArYRh3SO8jfffYLSER`)
+let get_resul = get_res.result
+let ini_audio = get_resul.preview
+let jawaban = get_resul.judul
+let kisi_kisi = jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')
+let ini_buffer = await getBuffer(ini_audio)
+textImg(`${S}Game Tebak Lagu${S}
 
+Petunjuk : ${kisi_kisi}
+Waktu : ${gamewaktu}s`)
+surya.sendMessage(from, ini_buffer, audio, {quoted: msg})
+let anal = jawaban.toLowerCase()
+game.addlagu(from, anal, gamewaktu, tebaklagu)
+gameAdd(sender, glimit)
+}
+break
 case 'tebakanime': case 'ta':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
@@ -13764,28 +13811,7 @@ game.addjenaka(from, anak, gamewaktu, tebakjenaka)
 gameAdd(sender, glimit)
 }
 break
-case 'tebaklagu': case 'tlagu':{
-if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-if (isMuted) return
-if (isBan) return 
-if (!isGroup)return reply(mess.OnlyGrup)
-if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sudah habis`)
-if (game.isTebakLirik(from, tebaklirik)) return textImg(`Masih ada soal yang belum di selesaikan`)
-let anu = await axios.get(`https://api.xteam.xyz/game/tebaklagu?&id=3AaKHE9ZMMEdyRadsg8rcy&APIKEY=ac6384c223bbc69e`)
-const petunjuk = anu.result.judul.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')
-let lagu = getBuffer(anu.result.preview)
-textImg(`*JAWABLAH SOAL BERIKUT*
 
-Petunjuk : ${petunjuk}
-Waktu : ${gamewaktu}s
-
-lagu sedang dikirim...`)
-surya.sendMessage(from, lagu, audio, {quoted:msg})
-let anal = anu.result.judul.toLowerCase()
-game.addlirik(from, anal, gamewaktu, tebaklirik)
-gameAdd(sender, glimit)
-}
-break
 case 'tebakbendera': case 'tb':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
