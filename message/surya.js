@@ -10124,7 +10124,7 @@ break*/
 case 'ic': case 'infocreator': case 'infosurya':
 if (isMuted) retur
 if (isBan) return
-let Fotosurya = fs.readFileSync('./media/image/Surya.jpg')
+let Fotosurya = await getBuffer(`https://i.ibb.co/ZH59Rx2/d61d5e369e49.jpg`)
 let Ryaa = await surya.prepareMessage(from, Fotosurya, location, {thumbnail: Fotosurya})
 const Suryabutton = [{buttonId: 'verify', buttonText: {displayText: 'Ok stah surya🐱'}, type: 1}]
 const suryaMessage = {
