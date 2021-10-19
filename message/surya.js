@@ -1,4 +1,4 @@
-const {
++const {
 WAConnection,
 MessageType,
 Presence,
@@ -11827,7 +11827,7 @@ reply(mess.error.api)
 })
 }
 break
-case 'waifu':{
+/*case 'waifu':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (!isNsfw) return textImg(`*Fitur Nsfw belum diaktifkan*`)
 if (!isPremium) return sendButMessage(from, prem1, prem2, prem3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -11846,7 +11846,7 @@ reply(mess.error.api)
 })
 limitAdd(sender, limit)
 }
-break
+break*/
 case 'nekonime':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 //if (!isNsfw) return textImg(`*Fitur Nsfw belum diaktifkan*`)
