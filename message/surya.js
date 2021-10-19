@@ -1,4 +1,4 @@
-+const {
+const {
 WAConnection,
 MessageType,
 Presence,
@@ -336,35 +336,55 @@ case 11: bulan1 = 'Desember'; break;
 }
 var tampilBulan = '' + hari + ' ' + weton + ' - ' + tanggal + ' ' + bulan1 + ' ' + tahun;
 
-var ase = new Date();
-var waktoonyabro = ase.getHours();
-switch(waktoonyabro){
-case 0: waktoonyabro = 'Selamat Malam🌚'; break;
-case 1: waktoonyabro = 'Selamat Malam🌚'; break;
-case 2: waktoonyabro = 'Selamat Malam🌚'; break;
-case 3: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 4: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 5: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 6: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 7: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 8: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 9: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 10: waktoonyabro = 'Selamat Pagi🌝'; break;
-case 11: waktoonyabro = 'Selamat Siang🔥'; break;
-case 12: waktoonyabro = 'Selamat Siang🔥'; break;
-case 13: waktoonyabro = 'Selamat Siang🔥'; break;
-case 14: waktoonyabro = 'Selamat Siang🔥'; break;
-case 15: waktoonyabro = 'Selamat Sore🌹'; break;
-case 16: waktoonyabro = 'Selamat Sore🌹'; break;
-case 17: waktoonyabro = 'Selamat Sore🌹'; break;
-case 18: waktoonyabro = 'Selamat Malam🌚'; break;
-case 19: waktoonyabro = 'Selamat Malam🌚'; break;
-case 20: waktoonyabro = 'Selamat Malam🌚'; break;
-case 21: waktoonyabro = 'Selamat Malam🌚'; break;
-case 22: waktoonyabro = 'Selamat Malam🌚'; break;
-case 23: waktoonyabro = 'Selamat Malam🌚'; break;
+/*var ase = new Date()
+var waktunyabro = ase.getHours()
+switch(waktunyabro){
+case 0: waktunyabro = 'Selamat Malam🌚'; break;
+case 1: waktunyabro = 'Selamat Malam🌚'; break;
+case 2: waktunyabro = 'Selamat Malam🌚'; break;
+case 3: waktunyabro = 'Selamat Pagi🌝'; break;
+case 4: waktunyabro = 'Selamat Pagi🌝'; break;
+case 5: waktunyabro = 'Selamat Pagi🌝'; break;
+case 6: waktunyabro = 'Selamat Pagi🌝'; break;
+case 7: waktunyabro = 'Selamat Pagi🌝'; break;
+case 8: waktunyabro = 'Selamat Pagi🌝'; break;
+case 9: waktunyabro = 'Selamat Pagi🌝'; break;
+case 10: waktunyabro = 'Selamat Pagi🌝'; break;
+case 11: waktunyabro = 'Selamat Siang🔥'; break;
+case 12: waktunyabro = 'Selamat Siang🔥'; break;
+case 13: waktunyabro = 'Selamat Siang🔥'; break;
+case 14: waktunyabro = 'Selamat Siang🔥'; break;
+case 15: waktunyabro = 'Selamat Sore🌹'; break;
+case 16: waktunyabro = 'Selamat Sore🌹'; break;
+case 17: waktunyabro = 'Selamat Sore🌹'; break;
+case 18: waktunyabro = 'Selamat Malam🌚'; break;
+case 19: waktunyabro = 'Selamat Malam🌚'; break;
+case 20: waktunyabro = 'Selamat Malam🌚'; break;
+case 21: waktunyabro = 'Selamat Malam🌚'; break;
+case 22: waktunyabro = 'Selamat Malam🌚'; break;
+case 23: waktunyabro = 'Selamat Malam🌚'; break;
 }
-var Ucapan = "" + waktoonyabro;
+var Ucapan = ${waktunyabro}*/
+
+const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
+        if(time2 < "23:59:00"){
+        var Ucapan = 'Selamat Malam🌃'
+}
+        if(time2 < "19:00:00"){
+        var Ucapan = 'Selamat Petang🌆'
+}
+        if(time2 < "18:00:00"){
+        var Ucapan = 'Selamat Sore🌇'
+}
+        if(time2 < "15:00:00"){
+        var Ucapan = 'Selamat Siang🏙️'
+}
+        if(time2 < "11:00:00"){
+        var Ucapan = 'Selamat Pagi🌅'
+}
+        if(time2 < "05:00:00"){
+        var Ucapan = 'Selamat Malam🌃'
+}
 
 var ase = new Date();
 var waktoo = ase.getHours();
@@ -15719,23 +15739,8 @@ if (!isOwner && !isOwner2) return mentions(mess.OnlySurya, [Suryaa], true)
 fakestatus(`_Restarting Mecha Botz_`)
 exec(`node main`)
 setTimeout( () => {
-surya.sendMessage(from, '1', text)
-}, 5000)
-setTimeout( () => {
-surya.sendMessage(from, '2', text)
-}, 4000)
-setTimeout( () => {
-surya.sendMessage(from, '3', text)
-}, 3000)
-setTimeout( () => {
-surya.sendMessage(from, '4', text)
-}, 2000)
-setTimeout( () => {
-surya.sendMessage(from, '5', text)
-}, 1000)
-setTimeout( () => {
 fakestatus(`_Mecha Botz Berhasil Di Restart_`)
-}, 7000)
+}, 1000)
 break
 case 'setname':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
