@@ -10935,6 +10935,15 @@ gameAdd(sender, glimit)
 }
 }
 break
+case 'igdl2': 
+case 'instagram2':
+if (!q) return reply('Link IG nya mana? ')
+if (!q.includes('instagram')) return reply(mess.error.Iv)
+reply(mess.wait)
+let anu2 = await igDownloader(`${q}`)
+.then((data) => { sendFileFromUrl(from, data.result.link, data.result.desc, msg) })
+.catch((err) => { reply(String(err)) })
+break
 case 'igdl':
 case 'instagram':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -11039,24 +11048,71 @@ reply(mess.error.api)
 }
 break
 
-case 'tiktok':
- 		if (!isUrl(args[0]) && !args[1].includes('tiktok.com')) return reply(mess.error.lv)
- 		if (!q) return fakegroup('Linknya?')
- 		reply(mess.wait)
-		hx.ttdownloader(`${args[1]}`)
-    		.then(result => {
-    		const { wm, nowm, audio } = result
-    		axios.get(`https://tinyurl.com/api-create.php?url=${nowm}`)
-    		.then(async (a) => {
-    		let me = `*Link* : ${a.data}`
-		surya.sendMessage(from,{url:`${nowm}`},video,{mimetype:'video/mp4',quoted:msg,caption:me})
-		})
-		})
-     		.catch(e => console.log(e))
-     		break
-
-case 'igstalk': case 'stalkig':{
+case 'tiktokmp4': case 'tiktok':
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
+if (isBan) return 
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q.includes('tiktok.com')) return reply(mess.error.Iv)
+if (!q) return textImg('Linknya?')
+reply(mess.wait)
+hx.ttdownloader(q)
+.then(result => {
+const { wm, nowm, audio } = result
+axios.get(`https://tinyurl.com/api-create.php?url=${nowm}`)
+.then(async (a) => {
+let me = `*Link* : ${a.data}`
+surya.sendMessage(from, {url:`${nowm}`}, video, {mimetype:'video/mp4', quoted:msg, caption: 'Success'})
+})
+})
+.catch(e => console.log(e))
+break
+
+case 'igstalk2':
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return textImg('Usernamenya?')
+ig.fetchUser(`${q}`).then(Y => {
+let ten2 = `${Y.profile_pic_url_hd}`
+let teks2 = `┏┉⌣ ┈̥-̶̯͡..̷̴✽̶┄┈┈┈┈┈┈┈┈┈┈┉┓
+┆ *INSTAGRAM PROFILE*
+└┈┈┈┈┈┈┈┈┈┈┈⌣ ┈̥-̶̯͡..̷̴✽̶⌣ ✽̶
+
+*Data Berhasil Didapatkan!*
+${S}▢ ID : ${Y.profile_id}${S}
+${S}▢ Username : ${q}${S}
+${S}▢ Full Name : ${Y.full_name}${S}
+${S}▢ Followers : ${Y.followers}${S}
+${S}▢ Following : ${Y.following}${S}
+${S}▢ PrivateAccount : ${Y.is_private}${S}
+${S}▢ VerifiedAccount : ${Y.is_verified}${S}
+${S}▢ Biography : ${Y.biography}${S}
+${S}▢ Link : https://instagram.com/${q}${S}`
+sendFileFromUrl(from, ten2, teks2) 
+})      
+limitAdd(sender, limit)
+break    
+case 'fbdl2':
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+            if (!q) return reply('Linknya?')
+            if (!q.includes('facebook.com')) return reply(mess.error.Iv)
+            reply(mess.wait)
+            hx.fbdown(q)
+            .then(G => {
+            let ten = `${G.HD}`
+            sendFileFromUrl(from, ten, `*Link video_normal* : ${G.Normal_video}`)
+            })
+            limitAdd(sender, limit)
+            break    
+case 'igstalk': case 'stalkig':{
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 if (args.length < 2) return textImg(`Kirim perintah *${prefix}igstalk* _username_`)
 Flink(mess.wait)
@@ -13821,7 +13877,7 @@ sendFileFromUrl(from, ttm, audio, msg)
 limitAdd(sender, limit)
 }
 break
-case 'tiktokmusik': case 'tiktokmusic':{
+case 'tiktokaudio': case 'tiktokmusic': case 'ttdlmp3':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (!isPremium) return sendButMessage(from, prem1, prem2, prem3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (!q) return reply('Linknya mana?')
@@ -13836,7 +13892,7 @@ sendFileFromUrl(from, ttv.data.result, msg)
 gameAdd(sender, glimit)
 }
 break
-case 'tiktokvideo': case 'ttdl':{
+/*case 'tiktokvideo': case 'ttdlmp4':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (!q) return reply('Linknya mana?')
 if (!q.includes('tiktok')) return reply(mess.error.Iv)
@@ -13866,7 +13922,7 @@ ${S}▢ Descripttion : ${data.result.description}${S}`
 surya.sendMessage(from, ini_video, video, { quoted: msg, caption: capt })
 gameAdd(sender, glimit)
 }
-break
+break*/
 case 'ytmp4':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (!q) return reply('Linknya?')
