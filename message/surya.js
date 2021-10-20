@@ -7092,7 +7092,7 @@ description: `\nClick untuk menampilkan creator mecha botz`,
 {
 "title": `Rules`,
 description: `\nClick untuk menampilkan rules mecha botz`,
-"rowId": `${prefix}rulesbot`
+"rowId": `${prefix}rules`
 },
 {
 "title": "Info Menu",
@@ -17629,7 +17629,7 @@ description: `\nClick untuk menampilkan creator mecha botz`,
 {
 "title": `Rules`,
 description: `\nClick untuk menampilkan rules mecha botz`,
-"rowId": `${prefix}rulesbot`
+"rowId": `${prefix}rules`
 },
 {
 "title": "Info Menu",
