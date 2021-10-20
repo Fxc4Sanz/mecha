@@ -154,8 +154,8 @@ let mtk = [];
 let ky_ttt = []
 let tttawal= ["0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣"]
 let hadiah = '100'
-const winawal = 1
-const loseawal = 1
+const winawal = 2
+const loseawal = 2
 const losecount = 1
 const wincount = 1
 
@@ -1444,7 +1444,7 @@ buttons: buttons,
 headerType: 1
 }
 surya.sendMessage(msg.key.remoteJid, buttonsMessage, MessageType.buttonsMessage, {
-contextInfo: {mentionedJid: [Suryaa, `${creator}@s.whatsapp.net`]}, msg})
+contextInfo: {mentionedJid: [Suryaa]}, msg})
 }
 }
 if (msg.key.remoteJid.endsWith('@g.us') && offline) {
@@ -2587,6 +2587,78 @@ game.cekWaktuTT(surya, tekateki)
 game.cekWaktuSK(surya, susunkata)
 game.cekWaktuMtk(surya, mtk)
 
+
+if (game.isTebakLagu(from, tebaklagu) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTLG(from, tebaklagu))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isSusunKata(from, susunkata) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanSK(from, susunkata))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTekaTeki(from, tekateki) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTT(from, tekateki))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTebakKalimat(from, tebakkalimat) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTKAL(from, tebakkalimat))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTebakGambar(from, tebakgambar) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTG(from, tebakgambar))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isMtk(from, mtk)){
+if (!chats.toLowerCase().includes(game.getJawabanMtk(from, mtk))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isCakLontong(from, caklontong) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanCak(from, caklontong))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTebakJenaka(from, tebakjenaka) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTS(from, tebakjenaka))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isSiapaAku(from, siapaaku) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanSA(from, siapaaku))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isAsahOtak(from, asahotak) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanAO(from, asahotak))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTebakKata(from, tebakkata) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTK(from, tebakkata))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTebakKimia(from, tebakkimia) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTU(from, tebakkimia))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTebakBendera(from, tebakbendera) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTB(from, tebakbendera))){
+textImg(`*Jawaban salah!*`)
+}
+}
+if (game.isTebakAnime(from, tebakanime) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanTA(from, tebakanime))){
+textImg(`*Jawaban salah!*`)
+}
+}
+
 if (game.isTebakLagu(from, tebaklagu) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanTLG(from, tebaklagu))){
 var htlg = randomNomor(`${balanc}`)
@@ -2627,7 +2699,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 susunkata.splice(game.getSKPosi(from, susunkata), 1)
@@ -2651,7 +2722,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -2676,7 +2746,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -2701,7 +2770,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -2726,7 +2794,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -2751,7 +2818,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -2776,7 +2842,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -2801,13 +2866,13 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 tebaklirik.splice(game.getTLPosi(from, tebaklirik), 1)
 }
 }
+
 if (game.isTebakJenaka(from, tebakjenaka) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanTS(from, tebakjenaka))){
 var htgmj = randomNomor(`${balanc}`)
@@ -2849,13 +2914,13 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 siapaaku.splice(game.getSAPosi(from, siapaaku), 1)
 }
 }
+
 if (game.isAsahOtak(from, asahotak) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanAO(from, asahotak))){
 var htmao = randomNomor(`${balanc}`)
@@ -2873,13 +2938,13 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 asahotak.splice(game.getAOPosi(from, asahotak), 1)
 }
 }
+
 if (game.isTebakKata(from, tebakkata) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanTK(from, tebakkata))){
 var htgtk = randomNomor(`${balanc}`)
@@ -2897,13 +2962,12 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
-contextInfo: {
-mentionedJid: [Suryaa, sender, '0@s.whatsapp.net'], quoted: textImg}})
+contextInfo: {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net'], quoted: textImg}})
 tebakkata.splice(game.getTKPosi(from, tebakkata), 1)
 }
 }
+
 if (game.isTebakKimia(from, tebakkimia) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanTU(from, tebakkimia))){
 var reva = randomNomor(`${balanc}`)
@@ -2921,13 +2985,13 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 tebakkimia.splice(game.getTUPosi(from, tebakkimia), 1)
 }
 }
+
 if (game.isTebakBendera(from, tebakbendera) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanTB(from, tebakbendera))){
 var syahira = randomNomor(`${balanc}`)
@@ -2945,13 +3009,13 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, '0@s.whatsapp.net']}, quoted: msg})
 tebakbendera.splice(game.getTBPosi(from, sender, tebakbendera), 1)
 }
 }
+
 if (game.isTebakAnime(from, tebakanime) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanTA(from, tebakanime))){
 var vinna = randomNomor(`${balanc}`)
@@ -2969,7 +3033,6 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
 contextInfo: {
 mentionedJid: [Suryaa, '0@s.whatsapp.net']}, quoted: msg})
@@ -11423,7 +11486,7 @@ let anu = process.uptime()
 let tesknya = `*Versi Whatsapp :* ${wa_version}
 *Baterai :* ${baterai.baterai}%
 *Charge :* ${baterai.cas === 'true' ? 'Ya' : 'Tidak'}
-*RAM :* ${(process.memoryUsage().heapUsed / 500 / 500).toFixed(2)}MB / ${Math.round(require('os').totalmem / 500 / 500)}MB
+*RAM :* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
 *MCC :* ${mcc}
 *MNC :* ${mnc}
 *Versi OS :* 10.1.0
@@ -13637,7 +13700,8 @@ break
 case 'siapakahaku': case 'sa':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
-if (isBan) return 
+if (isBan) return
+if (isQuotedMsg)
 if (!isGroup)return reply(mess.OnlyGrup)
 if (gamemode === 'false'){
 if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sudah habis`)
@@ -17802,6 +17866,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[0].url)
@@ -17813,6 +17878,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[6].url)
@@ -17825,6 +17891,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[1].url)
@@ -17836,6 +17903,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[12].url)
@@ -17847,6 +17915,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[11].url)
@@ -17858,6 +17927,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[3].url)
@@ -17869,6 +17939,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[13].url)
@@ -17879,7 +17950,8 @@ case 'openmoji': case 'omoji': case 'op':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
 if (isBan) return 
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`) 
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[8].url)
@@ -17891,6 +17963,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[7].url)
@@ -17902,6 +17975,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[2].url)
@@ -17913,6 +17987,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[5].url)
@@ -17924,6 +17999,7 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (!q) return reply(`Emojinya mana?`)
 emoji.get(`${args[1]}`)
 .then(async emoji => {
 sendStickerUrl(from, emoji.images[4].url)
@@ -18515,7 +18591,7 @@ giid.push(id)
 let timestampi = speed();
 let latensii = speed() - timestampi
 const { wa_version, mcc, mnc, os_version, device_manufacturer, device_model } = surya.user.phone
-mentions(`
+let statusbot = `
 「 _*STATISTIK BOT*_ 」
 
 *❏ Bot information*
@@ -18534,7 +18610,7 @@ mentions(`
 ├⟢ _*Hit Today : ${hit_today.length}*_
 ├⟢ _*Total User : ${pendaftar.length}*_
 ├⟢ _*Total Register : ${_registered.length}*_
-├⟢ _*RAM : ${(process.memoryUsage().heapUsed / 700 / 700).toFixed(2)}MB / ${Math.round(require('os').totalmem / 700 / 700)}MB*_
+├⟢ _*RAM : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*_
 ├⟢ _*MCC : ${mcc}*_
 ├⟢ _*MNC : ${mnc}*_
 ├⟢ _*Versi OS : 10.1.0*_
@@ -18543,7 +18619,8 @@ mentions(`
 ├⟢ _*Group Chat : ${giid.length}*_
 ├⟢ _*Personal Chat : ${totalchat.length - giid.length}*_
 ├⟢ _*Total Chat : ${totalchat.length}*_
-└⟢ _*Speed : ${latensii.toFixed(4)} Second*_`, ['62895415497664@s.whatsapp.net'], true)
+└⟢ _*Speed : ${latensii.toFixed(4)} Second*_`
+surya.sendMessage(from, statusbot, text, {thumbnail: suryaImg, sendEphemeral: true, msg, contextInfo : {mentionedJid: [Suryaa, sender], forwardingScore: 100, isForwarded: true}})
 }
 break
 case 'delthischat':
