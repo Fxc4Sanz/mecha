@@ -12139,9 +12139,8 @@ let arrTop = []
 for (let i = 0; i < _registered.length; i ++){
 totalregister += `
 ◪ *${i + 1}. @${_registered[i].id.split("@")[0]}*
-├❑ *Nama :* ${_registered[i].name}
-├❑ *Serial :* ${_registered[i].serial}
-└❑ *Waktu verifikasi :* ${_registered[i].time}\n`
+├❑ *Name :* ${_registered[i].name}
+└❑ *Verification time :* ${_registered[i].time}\n`
 arrTop.push(_registered[i].id)
 }
 mentions(totalregister, arrTop, true)
