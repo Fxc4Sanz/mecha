@@ -66,7 +66,8 @@ const { addVote, delVote } = require('../lib/vote')
 const { tidur, isAfk, cekafk, addafk } = require("../lib/offline");
 const _sewa = require("../lib/sewa");
 const level = require("../lib/level");
-const setGelud = require('../lib/gameGelud.js')
+const { herolist } = require('../lib/herolist');
+const { herodetails } = require('../lib/herodetail');
 let voting = JSON.parse(fs.readFileSync('./database/voting.json'))
 
 //Database
@@ -281,7 +282,7 @@ let gamemode = 'false'
 
 let gcounti = { prem: 100, user: 5}
 let limitCount = 5
-let gamewaktu = 70
+let gamewaktu = 70 
 
 let {
 ownerNumber,
@@ -1516,72 +1517,6 @@ const checkWin = (sender) => {
         })
         }
 
-// FAMILY 100
-const addfam = (chatId, jawaban, expired, _db) => {
-    let obi = { id: chatId, jawaban: jawaban, expired: Date.now() + toMs(`${expired}s`) }
-    _db.push(obi)
-}
-const getjawaban100 = (chatId, _db) => {
-    let found = false
-    Object.keys(_db).forEach((i) => {
-        if (_db[i].id === chatId) {
-            found = i
-        }
-    })
-    if (found !== false) {
-        return _db[found].jawaban
-    }
-}
-const isfam = (chatId, _db) => {
-    let status = false
-    Object.keys(_db).forEach((i) => {
-        if (_db[i].id === chatId) {
-            status = true
-        }
-    })
-    return status
-}
-const cekWaktuFam = (surya, _dir) => {
-    setInterval(() => {
-        let position = null
-        Object.keys(_dir).forEach((i) => {
-            if (Date.now() >= _dir[i].expired) {
-                position = i
-            }
-        })
-        if (position !== null) {
-            var juwu = `𝗚𝗔𝗠𝗘 𝗙𝗔𝗠𝗜𝗟𝗬 *100*\n\n*Waktu habis*\n*Jawaban yang belum terjawab :*\n\n`
-            let aae = _dir[position].jawaban
-            for (let i of aae){
-                juwu += `${i}\n`
-            }
-//surya.sendMessage(_dir[position].id, juwu, MessageType.text)
-const buttons = [{buttonId: 'family100', buttonText: {displayText: 'Lanjut ➡️'}, type: 1}]
-const buttonsMessage = {
-contentText: juwu,
-footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.split('@')[0]}`,
-buttons: buttons,
-headerType: 1
-}
-
-surya.sendMessage(_dir[position].id, buttonsMessage, MessageType.buttonsMessage, {
-contextInfo: {mentionedJid: [Suryaa, '0@s.whatsapp.net']}, msg})            
-            _dir.splice(position, 1)
-        }
-    }, 1000)
-}
-const getfamposi = (chatId, _dir) => {
-    let position = null
-    Object.keys(_dir).forEach((i) => {
-        if (_dir[i].id === chatId) {
-            position = i
-        }
-    })
-    if (position !== null) {
-        return position
-    }
-}
-
 if(isGroup && !isVote) {
         if (budy.toLowerCase() === 'vote'){
         let vote = JSON.parse(fs.readFileSync(`./lib/${from}.json`))
@@ -2540,7 +2475,7 @@ reply(`Bot telah diunmute di group ini`)
 }
 }
 
-cekWaktuFam(surya, family100)
+game.cekWaktuFam(surya, family100)
 game.cekWaktuTG(surya, tebakgambar)
 game.cekWaktuCak(surya, caklontong)
 game.cekWaktuTL(surya, tebaklirik)
@@ -2557,8 +2492,51 @@ game.cekWaktuTT(surya, tekateki)
 game.cekWaktuSK(surya, susunkata)
 game.cekWaktuMtk(surya, mtk)
 
+/*if (isCmd && !isList && !isButton && !isViewOnce) {
+if (isRegister) return
+const namaUser = pushname
+const serialUser = createSerial(15)
+let veri = sender
+if (isUser) {
+addRegisteredUser(sender, namaUser, serialUser, timesNow)
+try {
+var ppimg = await surya.getProfilePicture(`${sender.split('@')[0]}@c.us`)
+} catch {
+var ppimg = 'https://i.ibb.co/t2m9fFt/88876ba5bb74.jpg'
+}
+let hasil = `
+ *〘 VERIFICATION SUCCESS 〙*
 
-if (game.isTebakLagu(from, tebaklagu) && !isBan && isUser){
+*• Nama :* ${namaUser}
+*• Serial :* ${serialUser}
+*• Tag :* @${sender.split('@')[0]}
+*• Nomor :* ${sender.split("@")[0]}
+*• Waktu Verifikasi :* ${timesNow}
+*• Total Register :* ${_registered.length}
+*• Total Pengguna :* ${pendaftar.length}
+
+Jangan Lupa Donasi Bro!`
+let verif = await getBuffer(ppimg)
+let vefy = await surya.prepareMessage(from, verif, location, {thumbnail: verif})
+const buttons = [{buttonId: 'verify', buttonText: {displayText: 'Makasih'}, type: 1}]
+const buttonMessage = {
+locationMessage: vefy.message.locationMessage,
+contentText: `${hasil}`,
+footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.split('@')[0]}`,
+buttons: buttons,
+headerType: 6
+}
+surya.sendMessage(Suryaa, buttonMessage, MessageType.buttonsMessage, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+}
+}*/
+
+if (game.isSiapaAku(from, siapaaku) && !isBan && isUser){
+if (!chats.toLowerCase().includes(game.getJawabanSA(from, siapaaku))){
+textImg(`*Jawaban salah!*`)
+}
+}
+
+/*if (game.isTebakLagu(from, tebaklagu) && !isBan && isUser){
 if (!chats.toLowerCase().includes(game.getJawabanTLG(from, tebaklagu))){
 textImg(`*Jawaban salah!*`)
 }
@@ -2598,11 +2576,6 @@ if (!chats.toLowerCase().includes(game.getJawabanTS(from, tebakjenaka))){
 textImg(`*Jawaban salah!*`)
 }
 }
-if (game.isSiapaAku(from, siapaaku) && !isBan && isUser){
-if (!chats.toLowerCase().includes(game.getJawabanSA(from, siapaaku))){
-textImg(`*Jawaban salah!*`)
-}
-}
 if (game.isAsahOtak(from, asahotak) && !isBan && isUser){
 if (!chats.toLowerCase().includes(game.getJawabanAO(from, asahotak))){
 textImg(`*Jawaban salah!*`)
@@ -2627,7 +2600,7 @@ if (game.isTebakAnime(from, tebakanime) && !isBan && isUser){
 if (!chats.toLowerCase().includes(game.getJawabanTA(from, tebakanime))){
 textImg(`*Jawaban salah!*`)
 }
-}
+}*/
 
 if (game.isTebakLagu(from, tebaklagu) && !isBan && isUser){
 if (chats.toLowerCase().includes(game.getJawabanTLG(from, tebaklagu))){
@@ -3009,8 +2982,8 @@ mentionedJid: [Suryaa, '0@s.whatsapp.net']}, quoted: msg})
 tebakanime.splice(game.getTAPosi(from, tebakanime), 1)
 }
 }
-if (isfam(from, family100) && !isBan && isUser){
-var anjuy = getjawaban100(from, family100)
+if (game.isfam(from, family100) && !isBan && isUser){
+var anjuy = game.getjawaban100(from, family100)
 for (let i of anjuy){
 if (chats.toLowerCase().includes(i)){
 var htgmi = Math.floor(Math.random() * `${balanc}`) + 1
@@ -3036,10 +3009,9 @@ footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.s
 buttons: buttons,
 headerType: 1
 }
-
 surya.sendMessage(from, buttonsMessage, MessageType.buttonsMessage, {
-contextInfo: {mentionedJid: [Suryaa, '0@s.whatsapp.net']}, quoted: msg})
-family100.splice(getfamposi(from, family100), 1)
+contextInfo: {mentionedJid: [Suryaa]}, quoted: msg})
+family100.splice(game.getfamposi(from, family100), 1)
 }
 }
 
@@ -3387,29 +3359,11 @@ Duration : ${yut.videos[0].timestamp}
 Link : ${yut.videos[0].url}${S}
 
 *_Lagu Yang Anda Cari Sedang Dikirim..._*`
-//sendFileFromUrl(from, thumb, `${captionis}`, msg)
-let mp3nya = getBuffer(`https://youtube.com/watch?v=-_lb--PWEMU`)
-surya.sendMessage(from, mp3nya, audio, {contextInfo :{text: 'hi',
-"forwardingScore": 1000,
-isForwarded: false,
-sendEphemeral: false,
-"externalAdReply": {
-"title": `PLAY MP3` ,
-"body": `Mecha Botz`,
-"mediaType": "2",
-"thumbnailUrl": "",
-"mediaUrl": `${dl_link}`,
-"thumbnail": "",
-"sourceUrl": "",
-},mentionedJid:[Suryaa, sender]}, quoted: msg})
+sendFileFromUrl(from, dl_link, msg)
 })
 })
-.catch((err) => reply(`${err}`))
 } catch (err) {
-sendMess(ownerNumber, 'PlayMp3 Error : ' + err)
-console.log(color('[PlayMp3]', 'red'), err)
 reply(mess.error.api)
-gameAdd(sender, glimit)
 }
 break
 case 'VIDEO':
@@ -3449,59 +3403,8 @@ console.log(color('[PlayMp4]', 'red'), err)
 reply(mess.error)
 gameAdd(sender, glimit)
 }
-break
-switch(command){
-case 'game':
-if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-if (isMuted) return
-if (isBan) return 
-let gl = '10'
-let ano = Number(nebal(gl) * `${harganya}`)
-if (getBalance(sender, balance) < ano) return textImg(`Balance kamu tidak mencukupi untuk pembelian ini`)
-kurangBalance(sender, ano, balance)
-givegame(sender, nebal(gl), glimit)
-reply(monospace(`Pembeliaan game limit sebanyak ${gl} berhasil
-
-Sisa Balance : $${getBalance(sender, balance)}
-Sisa Game Limit : ${cekGLimit(sender, gcount, glimit)}/${gcount}`))
 }
-break
-case 'FITUR':
-if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-if (isMuted) return
-if (isBan) return 
-let qn = q3
-let ane = Number(nebal(qn) * `${harganya}`)
-if (getBalance(sender, balance) < ane) return reply(`Balance kamu tidak mencukupi untuk pembelian ini`)
-kurangBalance(sender, ane, balance)
-giveLimit(sender, nebal(qn), limit)
-reply(monospace(`Pembeliaan limit sebanyak ${qn} berhasil
-
-Sisa Balance : $${getBalance(sender, balance)}
-Sisa Limit : ${getLimit(sender, limitCount, limit)}/${limitCount}`))
-}
-
-
-
-
 //TARO TERSERAH BAWA SWITCH COMMAND
-switch(command){
-case 'belimit':
-if (!q)return reply(`Example : ${prefix + command} 10`)
-if (isNaN(q)) return reply(`Harus berupa angka`)
-const tiyu = `PEMBELIAN SEBANYAK ${q}`
-const buttons = [
-{buttonId: `${q}`, buttonText: {displayText: 'FITUR'}, type: 1},
-{buttonId: 'game', buttonText: {displayText: 'GAME'}, type: 1}
-]
-const buttonMessage = {
-contentText: tiyu,
-footerText: `ᴘɪʟɪʜ sᴀʟᴀʜ sᴀᴛᴜ ʏᴀ ᴋᴀᴋ\n\n© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.split('@')[0]}`,
-buttons: buttons,
-headerType: 1
-}
-await surya.sendMessage(from, buttonMessage, MessageType.buttonsMessage, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-}
 switch(command){
 case 'ytplay':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -4045,11 +3948,6 @@ if (isMuted) return
 if (isBan) return 
 
 let Vinna = `6282314460324@s.whatsapp.net`
-let Shayna = `6285724775116@s.whatsapp.net`
-let Amanda = `6281227993047@s.whatsapp.net`
-let Aisyah = `6289637283487@s.whatsapp.net`
-let Dinda = `6281999505999@s.whatsapp.net`
-let Zahra = `62895343304106@s.whatsapp.net`
 let Clara = `628994120903@s.whatsapp.net`
 const buttons = [{buttonId: 'verify', buttonText: {displayText: 'Siap stah'}, type: 1}]
 const buttonMessage = {
@@ -8484,7 +8382,7 @@ to: bahasanya
 })
 .then((res) => reply(res.text))
 .catch((err) => {
-reply(bahasalist())
+reply(`Maaf terjadi kesalahan`)
 })
 trans
 limitAdd(sender, limit)
@@ -8499,7 +8397,7 @@ to: bahasanya
 })
 .then((res) => reply(res.text))
 .catch((err) => {
-reply(bahasalist())
+reply(`Maaf terjadi kesalahan`)
 })
 trans
 limitAdd(sender, limit)
@@ -8710,15 +8608,6 @@ surya.sendImage(from, await getBuffer(`http://api.lolhuman.xyz/api/random/quotes
 limitAdd(sender, limit)
 break
 
-case 'ppestetik':
-if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-if (isMuted) return
-if (isBan) return 
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-Flink(mess.wait)
-surya.sendImage(from, await getBuffer(`https://api.lolhuman.xyz/api/random/estetic?apikey=${lolkey}`), '', msg).catch(() => reply(mess.error.api))
-limitAdd(sender, limit)
-break
 case 'hentai2':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
@@ -10037,7 +9926,7 @@ ${sholat}
 └─────────────────
 
 ╭━━❬ LIST HERO ML ❭
-│➪ ${S}Akai
+│➪ Akai
 │➪ Aldous
 │➪ Alice
 │➪ Alucard
@@ -10219,18 +10108,7 @@ case 'note':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
 if (isBan) return 
-mentions(`${Ucapan} @${sender.split('@')[0]}
-${sholat}
-
-╭━━❬ *WAKTU* ❬━━━━━━❭
-│ _*• ${wib}*_
-│ _*• ${wit}*_
-│ _*• ${wita}*_
-│ _*• Tanggal : ${tampilBulan}*_
-│ _*• Tanggal Islam : ${dateIslamic}*_
-└─────────────────
-
-╭━━❬ NOTE ❭
+mentions(`╭━━❬ NOTE ❭
 │${owner} : Fitur Admin Grup atau Owner
 │${free} : Fitur gratis yang tidak memakai limit
 │${revatod} : Fitur yang memakai 1 limit harian
@@ -10639,7 +10517,9 @@ reply(`
 ┌〔 *Donasi • Emoney* 〕
 ├ *Pulsa :* 0895415497664
 ├ *Dana :* 0895415497664
-└──────────────`)
+└──────────────
+
+_Lihat doang gamau donasi:)_`)
 break
 case 'sourcecode': case 'sc': case 'src':
 if (isBan) return 
@@ -10653,43 +10533,6 @@ if (isBan) return
 textImg(`*BOT INI TELAH AKTIF SELAMA :*
 
 ${runtime(process.uptime())}`)
-break
-case 'stats': 
-case 'botstat':{
-if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-if (isMuted) return
-if (isBan) return 
-let totalchat = await surya.chats.all()
-let i = []
-let giid = []
-for (let mem of totalchat){
-i.push(mem.jid)
-}
-for (let id of i){
-if (id && id.includes('g.us')){
-giid.push(id)
-}
-}
-let timestampi = speed();
-let latensii = speed() - timestampi
-const { wa_version, mcc, mnc, os_version, device_manufacturer, device_model } = surya.user.phone
-let anu = process.uptime()
-let tesknya = `*Versi Whatsapp :* ${wa_version}
-*Baterai :* ${baterai.baterai}%
-*Charge :* ${baterai.cas === 'true' ? 'Ya' : 'Tidak'}
-*RAM :* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
-*MCC :* ${mcc}
-*MNC :* ${mnc}
-*Versi OS :* 10.1.0
-*Merk HP :* ${device_manufacturer}
-*Versi HP :* ${device_model}
-*Group Chat :* ${giid.length}
-*Personal Chat :* ${totalchat.length - giid.length}
-*Total Chat :* ${totalchat.length}
-*Speed :* ${latensii.toFixed(4)} Second
-*Runtime :* ${runtime(anu)}`
-reply(tesknya)
-}
 break
 case 'ytmp4':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -10849,6 +10692,46 @@ reply(mess.error.api)
 }
 }
 break
+case 'play2': 
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
+if (!isPremium) return sendButMessage(from, prem1, prem2, prem3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (args.length === 1) return textImg(`Kirim perintah *${prefix}play2 query*`)
+reply(mess.wait)
+let aramas = await yts(q)
+let aramat = aramas.all 
+var mulaikah = aramat[0].url							
+try {
+yta(mulaikah)
+.then((res) => {
+const { dl_link, thumb, title, filesizeF, filesize } = res
+axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+.then(async (a) => {
+if (Number(filesize) >= 100000) return
+let buffe = await getBuffer(dl_link)
+let fakke = await getBuffer(thumb)
+surya.sendMessage(from, buffe, MessageType.audio, {
+"contextInfo": {
+text: '©Surya',
+"forwardingScore": 100,
+isForwarded: false,
+sendEphemeral: true,
+"externalAdReply": {
+"title": `${title}`,
+"body": `${title}`,
+"mediaType": "2",
+"thumbnailUrl": `${thumb}`,
+"mediaUrl": `${a.data}`,
+"thumbnail": fakke,
+"sourceUrl": `${a.data}`
+}}, quoted:msg}).catch(() => reply(mess.error.api))
+})
+})
+} catch (err) {
+reply(mess.error.api)
+}
+break  
 case 'play': case 'putar': case 'playmp3':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
@@ -11040,7 +10923,7 @@ surya.sendMessage(from, {url:`${nowm}`}, video, {mimetype:'video/mp4', quoted:ms
 .catch(e => console.log(e))
 break
 
-case 'igstalk2':
+case 'igstalk':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
 if (isBan) return 
@@ -11058,8 +10941,8 @@ ${S}▢ Username : ${q}${S}
 ${S}▢ Full Name : ${Y.full_name}${S}
 ${S}▢ Followers : ${Y.followers}${S}
 ${S}▢ Following : ${Y.following}${S}
-${S}▢ PrivateAccount : ${Y.is_private}${S}
-${S}▢ VerifiedAccount : ${Y.is_verified}${S}
+${S}▢ PrivateAccount : ${Y.is_private ? 'Yes' : 'No'}${S}
+${S}▢ VerifiedAccount : ${Y.is_verified ? 'Yes' : 'No'}${S}
 ${S}▢ Biography : ${Y.biography}${S}
 ${S}▢ Link : https://instagram.com/${q}${S}`
 sendFileFromUrl(from, ten2, teks2) 
@@ -11081,7 +10964,7 @@ if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit
             })
             limitAdd(sender, limit)
             break    
-case 'igstalk': case 'stalkig':{
+case 'igstalk2': case 'stalkig':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
 if (isBan) return 
@@ -12864,7 +12747,7 @@ if (isBan) return
 if (!isGroup)return reply(mess.OnlyGrup)
 if (gamemode === 'false'){
 if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sudah habis`)
-if (isfam(from, family100)) return textImg(`Masih ada soal yang belum di selesaikan`)
+if (game.isfam(from, family100)) return textImg(`Masih ada soal yang belum di selesaikan`)
 let datafam = fs.readFileSync('./database/data/family100.js')
 let tebakfam = JSON.parse(datafam)
 let tbfam = Math.floor(Math.random() * tebakfam.length);
@@ -12883,7 +12766,7 @@ let iuhbs = fefsh.startsWith(' ') ? fefsh.replace(' ','') : fefsh
 let axsfh = iuhbs.endsWith(' ') ? iuhbs.replace(iuhbs.slice(-1), '') : iuhbs
 famil.push(axsfh.toLowerCase())
 }
-addfam(from, famil, gamewaktu, family100)
+game.addfam(from, famil, gamewaktu, family100)
 gameAdd(sender, glimit)
 }
 if (gamemode === 'true'){
@@ -13088,12 +12971,18 @@ if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sud
 if (game.isTebakLagu(from, tebaklagu)) return textImg(`Masih ada soal yang belum di selesaikan`)
 let res1 = await axios.get(`https://api.xteam.xyz/game/tebaklagu?apikey=kurrxd09&id=4mFuArYRh3SO8jfffYLSER`) 
 let kisi2 = res1.data.result.judul.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')
-textImg(`${S}Game Tebak Lagu${S}
+const buttonstlagu = [{buttonId: 'canceltebaklagu', buttonText: {displayText: 'Cancel tebak lagu'}, type: 1}]
+const tlaguMessage = {
+contentText: `${S}Game Tebak Lagu${S}
 
 Petunjuk : ${kisi2}
-Waktu : ${gamewaktu}s`)
+Waktu : ${gamewaktu}s`,
+buttons: buttonstlagu,
+headerType: 1
+}
+surya.sendMessage(from, tlaguMessage, MessageType.buttonsMessage, {
+contextInfo: {mentionedJid: [Suryaa]}, quoted: msg})
 sendFileFromUrl(from, res1.data.result.preview, {contextInfo: {forwardingScore: 100, isForwarded: true}, quoted:msg})
-//surya.sendMessage(from, await getBuffer(res1.result.data.preview), audio, {contextInfo: {forwardingScore: 100, isForwarded: true, mentionedJid: [sender]}, quoted:msg})
 let anal = res1.data.result.judul.toLowerCase()
 game.addlagu(from, anal, gamewaktu, tebaklagu)
 gameAdd(sender, glimit)
@@ -13329,36 +13218,6 @@ sendEphemeral: true,
 },mentionedJid:[Suryaa, sender, '0@s.whatsapp.net']}, quoted : ftroli})
 await gameAdd(sender, glimit)
 await healAdd(sender)
-break
-
-case 'gelud':
-if (isGame(sender, isPremium, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
-if (!isGroup) return reply(mess.only.group)
-if (msg.message.extendedTextMessage.contextInfo.mentionedJid > 1) return reply('Hanya bisa dengan 1 orang')
-if (!msg.message.extendedTextMessage.contextInfo.mentionedJid[0]) return
-if (args.length === 0) return reply(`Tag Lawan Yang Ingin Diajak Bermain Game`)
-if (fs.existsSync(`./media/${from}.json`)) return reply(`Sedang Ada Sesi, tidak dapat dijalankan secara bersamaan\nKetik *${prefix}delsesigelud*, untuk menghapus sesi`)
-var gelutSkuy = setGelud(`${from}`)
-gelutSkuy.status = false
-gelutSkuy.Z = sender.replace("@s.whatsapp.net", "")
-gelutSkuy.Y = args[0].replace("@", "")
-fs.writeFileSync(`./media/${from}.json`, JSON.stringify(gelutSkuy, null, 2))
-let starGame = `👑 Memulai Game Baku Hantam ????
-
-• @${sender.replace("@s.whatsapp.net", "")} Menantang Bergelud${args[1]} 
-Ketik Y/T untuk menerima atau menolak permainan`
-
-surya.sendMessage(from, starGame, text, {quoted: ftroli, contextInfo: { mentionedJid: [sender, args[1].replace("@", "") + "@s.whatsapp.net"]}})
-gameAdd(sender, glimit)
-break
-case 'delsesigelud':
-if (!isGroup) return reply(mess.only.group)
-if (fs.existsSync('./media/' + from + '.json')) {
-fs.unlinkSync('./media/' + from + '.json')
-reply('Berhasil Menghapus Sesi Gelud')
-} else {
-reply('Tidak ada sesi yang berlangsung')
-}
 break
 
 case 'suit':
@@ -14492,6 +14351,48 @@ textImg(`*▢ Cerita Hero ${q} :* ${anu.data.result.background_story}`)
 limitAdd(sender, limit)
 }
 break
+case 'herolist':
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(mess.Limits)
+await herolist().then((ress) => {
+let listt = `*List hero untuk feature ${prefix}herodetail*\n\n`
+for (var i = 0; i < ress.hero.length; i++) {
+listt += '-  ' + ress.hero[i] + '\n'
+}
+reply(listt)
+})
+limitAdd(sender, limit)
+break
+case 'herodetail':
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(mess.limit)
+var res = await herodetails(q)
+let her = `*Hero Details ${q}*
+
+*Nama* : ${res.hero_name}
+*Role* : ${res.role}
+*Quotes* : ${res.entrance_quotes}
+*Fitur Hero* : ${res.hero_feature}
+*Spesial* : ${res.speciality}
+*Rekomendasi Lane* : ${res.laning_recommendation}
+*Harga* : ${res.price.battle_point} [Battle point] | ${res.price.diamond} [DM] | ${res.price.hero_fragment} [Fragment]
+*Rilis* : ${res.release_date}
+
+*Durability* : ${res.skill.durability}
+*Offence* : ${res.skill.offense}
+*Skill Effect* : ${res.skill_effects}
+*Difficulty* : ${res.skill.difficulty}
+ 
+*Movement Speed* : ${res.attributes.movement_speed}
+*Physical Attack* : ${res.attributes.physical_attack}
+*Magic Defense* : ${res.attributes.magic_defense}
+*Ability Crit Rate* : ${res.attributes.ability_crit_rate}
+*HP* : ${res.attributes.hp}
+*Mana* : ${res.attributes.mana}
+*Mana Regen* : ${res.attributes.mana_regen}
+
+*Story* : ${res.background_story}`
+reply(her)
+limitAdd(sender, limit)
+break
 case 'tafsirmimpi':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
@@ -14975,15 +14876,6 @@ fs.unlinkSync(`./sticker/ttg.webp`)
 })
 
 break
-case 'loliv':
-case 'lolivid':
-case 'lolivideo':
-reply(mess.wait)
-let wipu1 = (await axios.get(`https://raw.githubusercontent.com/AlvioAdjiJanuar/random/main/loli.txt`)).data
-let wipi1 = wipu1[Math.floor(Math.random() * (wipu1.length))]
-let anu5 = await getBuffer(wipi1)
-surya.sendMessage(from, anu5, video, {quoted:msg})
-break
 
 case 'sgawgura':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
@@ -15029,6 +14921,25 @@ sendStickerUrl(from, `https://pecundang.herokuapp.com/api/memegen3?teks=${q}&img
 fs.unlinkSync('./stickmeme.jpeg')
 }
 limitAdd(sender, limit)
+break
+
+case 'memegen':
+if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
+if (isMuted) return
+if (isBan) return 
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+if (args.length < 2) return textImg(`Penggunaan ${command} text1|text2|reply image`)
+if (!q.includes("|")) return textImg(`Penggunaan ${command} text1|text2|reply image`)
+Flink(mess.wait)
+var imgbb = require('imgbb-uploader')
+if (isImage || isQuotedImage) {
+let ger = isQuotedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
+let owgi = await surya.downloadAndSaveMediaMessage(ger)
+let anu = await imgbb("9e30873557f06f55ddbb42f758173c79", owgi)
+let teks = `${anu.display_url}`
+surya.sendImage(from, await getBuffer(`https://api.lolhuman.xyz/api/memegen?apikey=${lolkey}&texttop=${q.split("|")[0]}&textbottom=${q.split("|")[1]}&img=${teks}`), '', msg).catch(() => reply(mess.error.api))
+limitAdd(sender, limit)
+}
 break
 
 case 'setpp': case 'setppbot':
@@ -18599,27 +18510,6 @@ reply(`Pilih 1 atau 0\nContoh : ${prefix}antihapus 1`)
 break
 
 default:
-}
-if (fs.existsSync(`./media/${from}.json`)) {
-	let gelutSkuy = setGelud(`${from}`)
-	if (budy.startsWith('Y')){
-		if (gelutSkuy.status) return reply(`Game telah dimulai sebelumnya!`)
-		gelutSkuy.status = true
-		let rand0m = [ gelutSkuy.Z, gelutSkuy.Y ]
-		let winR = rand0m[Math.floor(Math.random() * rand0m.length)]
-		fs.writeFileSync(`./media/${from}.json`, JSON.stringify(gelutSkuy, null, 2))
-		let starGame = `👑 Gelud Game
-
-Diantara @${gelutSkuy.Z.split('@')[0]} & @${gelutSkuy.Y.split('@')[0]}
-• Pemenangnya adalah [ @${winR.split('@')[0]} ] `
-	   surya.sendMessage(from, starGame, text, {quoted: ftroli, contextInfo: { mentionedJid: [winR + '@s.whatsapp.net', gelutSkuy.Z + '@s.whatsapp.net', gelutSkuy.Y + '@s.whatsapp.net']}})
-		fs.unlinkSync("./media/" + from + ".json");
-	if (budy.startsWith('T')){
-		surya.sendMessage(from, `👑 Game Gelud Rejected
-• @${gelutSkuy.Y} Menolak:)`, text, {quoted: ftroli, contextInfo: { mentionedJid: [gelutSkuy.Y + "@s.whatsapp.net"]}})
-		fs.unlinkSync("./media/" + from + ".json");
-}
-}
 }
 if (isTTT && iser2){
 if (budy.startsWith('Y')){
