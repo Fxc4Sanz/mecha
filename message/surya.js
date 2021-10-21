@@ -176,6 +176,7 @@ let lolkey = 'a93c7a5f5dc8ba3eeb1ebf44'
 let S = '\`\`\`'
 let bgbot = 'https://i.ibb.co/8DdJQpN/60b4e7bdb849.jpg'
 let suryaImg = fs.readFileSync(setting.suryaImg)
+let mechaImg = fs.readFileSync('./sticker/mecha.jpeg')
 let fake = `© ɪ ᴀᴍ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ`
 let ownerS = '62895415497664'
 let Suryaaa = '6285743780860'
@@ -336,36 +337,6 @@ case 11: bulan1 = 'Desember'; break;
 }
 var tampilBulan = '' + hari + ' ' + weton + ' - ' + tanggal + ' ' + bulan1 + ' ' + tahun;
 
-/*var ase = new Date()
-var waktunyabro = ase.getHours()
-switch(waktunyabro){
-case 0: waktunyabro = 'Selamat Malam🌚'; break;
-case 1: waktunyabro = 'Selamat Malam🌚'; break;
-case 2: waktunyabro = 'Selamat Malam🌚'; break;
-case 3: waktunyabro = 'Selamat Pagi🌝'; break;
-case 4: waktunyabro = 'Selamat Pagi🌝'; break;
-case 5: waktunyabro = 'Selamat Pagi🌝'; break;
-case 6: waktunyabro = 'Selamat Pagi🌝'; break;
-case 7: waktunyabro = 'Selamat Pagi🌝'; break;
-case 8: waktunyabro = 'Selamat Pagi🌝'; break;
-case 9: waktunyabro = 'Selamat Pagi🌝'; break;
-case 10: waktunyabro = 'Selamat Pagi🌝'; break;
-case 11: waktunyabro = 'Selamat Siang🔥'; break;
-case 12: waktunyabro = 'Selamat Siang🔥'; break;
-case 13: waktunyabro = 'Selamat Siang🔥'; break;
-case 14: waktunyabro = 'Selamat Siang🔥'; break;
-case 15: waktunyabro = 'Selamat Sore🌹'; break;
-case 16: waktunyabro = 'Selamat Sore🌹'; break;
-case 17: waktunyabro = 'Selamat Sore🌹'; break;
-case 18: waktunyabro = 'Selamat Malam🌚'; break;
-case 19: waktunyabro = 'Selamat Malam🌚'; break;
-case 20: waktunyabro = 'Selamat Malam🌚'; break;
-case 21: waktunyabro = 'Selamat Malam🌚'; break;
-case 22: waktunyabro = 'Selamat Malam🌚'; break;
-case 23: waktunyabro = 'Selamat Malam🌚'; break;
-}
-var Ucapan = ${waktunyabro}*/
-
 const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
         if(time2 < "23:59:00"){
         var Ucapan = 'Selamat Malam🌃'
@@ -389,31 +360,30 @@ const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
 var ase = new Date();
 var waktoo = ase.getHours();
 switch(waktoo){
-case 0: waktoo = `Waktu Tengah Malam - Tidur Kak :)`; break;
-case 1: waktoo = `Waktu Tengah Malam
-- Tidur Kak, Ga baik bergadang :)`; break;
-case 2: waktoo = `Waktu Dini Hari - Tidur Kak :)`; break;
-case 3: waktoo = `Waktu Dini Hari - Bangun Kak Hampir Subuh`; break;
-case 4: waktoo = `Waktu Subuh - Jangan Lupa Sholat Subuh Kak`; break;
-case 5: waktoo = `Waktu Subuh - Jangan Lupa Sholat Subuh Kak`; break;
-case 6: waktoo = `Waktu Pagi - Jangan Lupa Sarapan Kak`; break;
-case 7: waktoo = `Waktu Pagi - Jangan Lupa Sarapan Kak`; break;
-case 8: waktoo = `Waktu Pagi - Jangan Lupa Sarapan Kak`; break;
-case 9: waktoo = `Waktu Pagi - Jangan Sampai Telat Makan Kak`; break;
-case 10: waktoo = `Waktu Pagi - Jangan Lupa Istirahat Kak`; break;
-case 11: waktoo = `Waktu Dhuhur -️ Jangan Lupa Sholat Dhuhur Kak`; break;
-case 12: waktoo = `Waktu Dhuhur -️ Jangan Lupa Sholat Dzuhur`; break;
-case 13: waktoo = `Waktu Siang - Jangan Lupa Makan Siang Kak`; break;
-case 14: waktoo = `Waktu Siang - Jangan Lupa Makan Siang Kak`; break;
-case 15: waktoo = `Waktu Ashar - Jangan Lupa Sholat Ashar Kak`; break;
-case 16: waktoo = `Waktu Sore - Jangan Lupa Mandi Kak`; break;
-case 17: waktoo = `Waktu Sore - Jangan Lupa Mandi Kak`; break;
-case 18: waktoo = `Waktu Magrib - Jangan Lupa Sholat Magrib Kak`; break;
-case 19: waktoo = `Waktu Isya - Jangan Lupa Sholat Isya Kak`; break;
-case 20: waktoo = `Waktu Malam - Jangan Lupa Makan Malam Kak`; break;
-case 21: waktoo = `Waktu Malam - Selamat Tidur Kak`; break;
-case 22: waktoo = `Waktu Malam - Jangan Lupa Beristirahat`; break;
-case 23: waktoo = `Waktu Tengah Malam - Tidur Kak Gak baik bergadang :)`; break;
+case 0: waktoo = `Waktu Tengah Malam - Tidur Kak :)`; break
+case 1: waktoo = `Waktu Tengah Malam - Tidur Kak, Ga baik bergadang :)`;break
+case 2: waktoo = `Waktu Dini Hari - Tidur Kak :)`; break
+case 3: waktoo = `Waktu Dini Hari - Bangun Kak Hampir Subuh`; break
+case 4: waktoo = `Waktu Subuh - Jangan Lupa Sholat Subuh Kak`; break
+case 5: waktoo = `Waktu Subuh - Jangan Lupa Sholat Subuh Kak`; break
+case 6: waktoo = `Waktu Pagi - Jangan Lupa Sarapan Kak`; break
+case 7: waktoo = `Waktu Pagi - Jangan Lupa Sarapan Kak`; break
+case 8: waktoo = `Waktu Pagi - Jangan Lupa Sarapan Kak`; break
+case 9: waktoo = `Waktu Pagi - Jangan Sampai Telat Makan Kak`; break
+case 10: waktoo = `Waktu Pagi - Jangan Lupa Istirahat Kak`; break
+case 11: waktoo = `Waktu Dhuhur -️ Jangan Lupa Sholat Dhuhur Kak`; break
+case 12: waktoo = `Waktu Dhuhur -️ Jangan Lupa Sholat Dzuhur`; break
+case 13: waktoo = `Waktu Siang - Jangan Lupa Makan Siang Kak`; break
+case 14: waktoo = `Waktu Siang - Jangan Lupa Makan Siang Kak`; break
+case 15: waktoo = `Waktu Ashar - Jangan Lupa Sholat Ashar Kak`; break
+case 16: waktoo = `Waktu Sore - Jangan Lupa Mandi Kak`; break
+case 17: waktoo = `Waktu Sore - Jangan Lupa Mandi Kak`; break
+case 18: waktoo = `Waktu Magrib - Jangan Lupa Sholat Magrib Kak`; break
+case 19: waktoo = `Waktu Isya - Jangan Lupa Sholat Isya Kak`; break
+case 20: waktoo = `Waktu Malam - Jangan Lupa Makan Malam Kak`; break
+case 21: waktoo = `Waktu Malam - Selamat Tidur Kak`; break
+case 22: waktoo = `Waktu Malam - Jangan Lupa Beristirahat`; break
+case 23: waktoo = `Waktu Tengah Malam - Tidur Kak Gak baik bergadang :)`; break
 }
 var sholat = "" + waktoo; 
 
@@ -7006,14 +6976,14 @@ let userLevels = level.getLevelingLevel(sender, _level)
 let userExp = level.getLevelingXp(sender, _level)
 let requiredExp = 10 * Math.pow(userLevels, 2) + 50 * userLevels + 100
 let userRanks = level.getUserRank(sender, _level)
-try {
+/*try {
 var pic = await surya.getProfilePicture(sender)
 } catch {
 var pic = 'https://i.ibb.co/t2m9fFt/88876ba5bb74.jpg'
 }
 var tolink = await getBuffer('https://tinyurl.com/api-create.php?url=' + pic)
 let link = `https://api.lolhuman.xyz/api/rank?apikey=${lolkey}&img=${tolink}&background=${bgbot}&username=${encodeURIComponent(pushname)}&level=${userLevels}&ranking=${Number(userRanks)}&currxp=${userExp}&xpneed=${requiredExp}`
-let pnya = await getBuffer (link)
+let pnya = await getBuffer (link)*/
 let ststss = await surya.getStatus(`${sender.split('@')[0]}@c.us`)
 let LevelText = `*──「 LEVEL INFO 」──*
 
@@ -7025,7 +6995,8 @@ let LevelText = `*──「 LEVEL INFO 」──*
 ❑ *Rank :* ${rank}
 
 *Note : Kumpulin Exp Jika Ingin Menaikkan Level*`
-surya.sendMessage(from, pnya, image, {contextInfo: { forwardingScore: 9999, isForwarded: true, mentionedJid: [sender]}, quoted: msg, caption: LevelText})
+//surya.sendMessage(from, pnya, image, {contextInfo: { forwardingScore: 9999, isForwarded: true, mentionedJid: [sender]}, quoted: msg, caption: LevelText})
+surya.sendMessage(from, LevelText, text, {contextInfo: { forwardingScore: 9999, isForwarded: true, mentionedJid: [sender]}, quoted: msg})
 break
 
 case 'menu':case 'help':
@@ -7254,11 +7225,12 @@ let cokLevel = level.getLevelingLevel(sender, _level)
 let cokExp = level.getLevelingXp(sender, _level)
 let cokRequiredExp = 10 * Math.pow(cokLevel, 2) + 50 * cokLevel + 100
 let cokRank = level.getUserRank(sender, _level)
-const cokmemek = [{buttonId: 'listprem', buttonText: {displayText: 'List Premium'}, type: 1},
-{buttonId: 'sewabot', buttonText: {displayText: 'Sewa Botz'}, type: 1},
-{buttonId: 'rules', buttonText: {displayText: 'Rules Botz'}, type: 1}]
+let imegi = await surya.prepareMessage(from, suryaImg, image, {thumbnail: mechaImg})
+const cokmemek = [{buttonId: 'menu2', buttonText: {displayText: 'LIST MENU'}, type: 1},
+{buttonId: 'sewabot', buttonText: {displayText: 'SEWA BOT'}, type: 1},
+{buttonId: 'rules', buttonText: {displayText: 'RULES BOT'}, type: 1}]
 const cokasuMessage = {
-//imageMessage: imeu.message.imageMessage,
+imageMessage: imegi.message.imageMessage,
 contentText: `${Ucapan} @${sender.split('@')[0]}`,
 footerText: `
 *❏ About Mecha*
@@ -7293,7 +7265,7 @@ ${MENU}
 
 Jadilah diri sendiri, jangan mengikuti orang lain tetapi tidak sanggup untuk menjalaninya`,
 buttons: cokmemek,
-headerType: 1
+headerType: 4
 }
 surya.sendMessage(from, cokasuMessage, MessageType.buttonsMessage, {contextInfo :{text: 'hi',
 "forwardingScore": 1000,
@@ -7307,7 +7279,7 @@ sendEphemeral: true,
 "mediaUrl": "https://youtu.be/3jYbJq2JMiM",
 "thumbnail": fs.readFileSync('./sticker/mecha.jpeg'),
 "sourceUrl": "https://www.instagram.com/surya_skylark05",
-},mentionedJid:[Suryaa, sender]}, msg})
+},mentionedJid:[Suryaa, sender]}, quoted:ftroli})
 }
 break
 case 'stmenu':
@@ -15419,34 +15391,23 @@ textImg(`*Selesai*`)
 }
 break
 
-case 'clearfrom': case 'clearf':{
-if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-if (isMuted) return
-if (isBan) return 
-if (!isOwner && !isOwner2) return mentions(mess.OnlySurya, [Suryaa], true)
-surya.modifyChat(from, 'delete', {includeStarred: false})
-}
-textImg(`*Selesai*`)
-break
 case 'clear':{
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
 if (isBan) return 
 if (!isOwner && !isOwner2 && !fromMe) return mentions(mess.OnlySurya, [Suryaa], true)
 await sleep(3000)
-surya.modifyChat(Suryaa, 'delete', {includeStarred: false})
+surya.modifyChat(Suryaa, 'delete', {includeStarred: true})
 }
 textImg(`*Selesai*`)
 break
 
 case 'infoupdate':
-let y = `sakit hati`
 const infoupdate = [{buttonId: 'creatormecha', buttonText: {displayText: 'Creator Mecha Botz'}, type: 1}]
 const infoupdateMessage = {
-contentText: `
-*MECHA BOTZ UPDATE*
+contentText: `_*MECHA BOTZ UPDATE*_
 
-*Berikut adalah updatean Mecha Botz VIP*
+*Berikut adalah updatean Mecha Botz 20*
 • Quran audio
 • Wallpaper muslim
 • Quotes muslim
@@ -15492,35 +15453,28 @@ Untuk request fitur dan info selengkapnya silahkan hubungi creator saya dibawah 
 buttons: infoupdate,
 headerType: 1
 }
-
 surya.sendMessage(from, infoupdateMessage, MessageType.buttonsMessage, {contextInfo: {forwardingScore: 1000, isForwarded: true, mentionedJid: [Suryaa, Farid, '0@s.whatsapp.net']}, quoted: fkontak})
 break
 
 case 'blockme': case 'blokme':
 if (fromMe) return textImg(`_Tidak bisa memblokir nomor sendiri!_`)
-//if (isGroup) return textImg(`Perintah ini tidak bisa digunakan dalam digrup!`)
-setTimeout( () => {
 surya.sendMessage(sender, 'Perintah diterima\n\nMecha Botz akan memblokir kamu dalam...', text, {quoted: msg})
-}, 100)
 setTimeout( () => {
 surya.sendMessage(sender, '5', text, {quoted: msg})
-}, 2000)
+}, 1000)
 setTimeout( () => {
 surya.sendMessage(sender, '4', text, {quoted: msg})
-}, 3000)
+}, 2000)
 setTimeout( () => {
 surya.sendMessage(sender, '3', text, {quoted: msg})
-}, 4000)
+}, 3000)
 setTimeout( () => {
 surya.sendMessage(sender, '2', text, {quoted: msg})
-}, 5000)
+}, 4000)
 setTimeout( () => {
 surya.sendMessage(sender, '1', text, {quoted: msg})
-}, 6000)
-setTimeout( () => {
-surya.sendMessage(sender, `Bye bye👋🏻 ${pushname}`, text, {quoted: msg})
-}, 7000)
-await sleep(9000)
+}, 5000)
+await sleep(6000)
 await surya.blockUser(sender, "add")
 break
 
@@ -15593,7 +15547,7 @@ if (isBan) return
 offline = false
 fakestatus('```ANDA TELAH ONLINE```')
 break
- case 'offline':
+case 'offline':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (!isOwner && !fromMe) return mentions(mess.OnlySurya, [Suryaa], true)
 if (isMuted) return
@@ -15607,7 +15561,6 @@ break
 
 case 'afk':
 if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
-//if (!isPremium) return sendButMessage(from, prem1, prem2, prem3, {"contextInfo": {mentionedJid: [Suryaa, sender, '0@s.whatsapp.net']}, quoted: msg})
 if (isMuted) return
 if (isBan) return 
 if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sudah habis`)
@@ -15616,13 +15569,12 @@ if (isAfkOn) return reply('Afk sudah diaktifkan sebelumnya')
 if (body.slice(10000)) return reply('Alasanlu kepanjangan')
 let reason = q ? q : 'Tidak ada'
 afk.addAfkUser(sender, Date.now(), reason, _afk)
-//let waktuya = moment(msg.messageTimestamp * 1000).format('HH:mm:ss DD•MM•YYYY')
-let Wit = moment.tz('Asia/Jakarta').format('HH:mm:ss DD•MM•YYYY')
-let textAfk = `
-_*${pushname} [@${sender.split('@')[0]}] sedang AFK*_
+let WAFK = moment.tz('Asia/Jakarta').format('HH:mm:ss DD/MM/YYYY')
+let textAfk = `*FITUR AFK BERHASIL DIAKTIFKAN*
 
+_*Nama :*_ ${pushname} [@${sender.split('@')[0]}]
 _*Alasan :*_ ${reason}
-_*Sejak : ${Wit}*_`
+_*Sejak : ${WAFK}*_`
 const tombol = [{buttonId: 'arigatou', buttonText: {displayText: `Cepat kembali ${pushname}`}, type: 1}]
 const tombolMessage = {
 contentText: `${textAfk}`,
@@ -15640,18 +15592,17 @@ if (!isOwner && !isOwner2 && !fromMe) return mentions(mess.OnlySurya, [Suryaa], 
 if (isMuted) return
 if (isBan) return 
 if (isGame(sender, isOwner, gcount, glimit)) return textImg(`Limit game kamu sudah habis`)
-//if (!isGroup) return reply(mess.OnlyGrup)
 if (isAfkOn) return reply('Afk sudah diaktifkan sebelumnya')
 if (body.slice(10000)) return reply('Alasanlu kepanjangan')
 let alasan = q ? q : 'Tidak ada'
 afk.addAfkUser(sender, Date.now(), alasan, _afk)
-let waktunya = moment(msg.messageTimestamp * 1000).format('HH:mm:ss DD•MM•YYYY')
-let teksAfk = `
-_*${pushname} [@${sender.split('@')[0]}] sedang AFK*_
+let waktunya = moment(msg.messageTimestamp * 1000).format('HH:mm:ss DD/MM/YYYY')
+let teksAfk = `*FITUR AFK BERHASIL DIAKTIFKAN*
 
+_*Nama :*_ ${pushname} [@${sender.split('@')[0]}]
 _*Alasan :*_ ${alasan}
 _*Sejak : ${waktunya}*_`
-const tmbl = [{buttonId: 'sedih', buttonText: {displayText: 'Okey Stah Surya'}, type: 1}]
+const tmbl = [{buttonId: 'sedih', buttonText: {displayText: 'Yaudah iya'}, type: 1}]
 const tmblMessage = {
 contentText: `${teksAfk}`,
 footerText: `© ᴄʀᴇᴀᴛᴇᴅ ᴍᴇᴄʜᴀ ʙᴏᴛᴢ ʙʏ @${Suryaa.split('@')[0]}`,
@@ -15946,14 +15897,12 @@ if (!isRegister) return sendButMessage(from, daftar1, daftar2, daftar3, {"contex
 if (isMuted) return
 if (isBan) return 
 if (!isOwner && !isOwner2 && !fromMe) return mentions(mess.OnlySurya, [Suryaa], true)
-//if (args.length < 2) return textImg(`Kirim perintah *${prefix}join* link grup`)
 if (isQuotedMsg){
-if (!isUrl(quotedMsg.chats) && !quotedMsg.chats.includes('chat.whatsapp.com')) return reply(mess.error.Iv)
 let kode = quotedMsg.chats.replace('https://chat.whatsapp.com/', '')
 surya.acceptInvite(kode)
 textImg(`Sukses bergabung menggunakan tautan itu`)
-if (!isUrl(args[1]) && !args[1].includes('chat.whatsapp.com')) return reply(mess.error.Iv)
-let code = args[1].replace('https://chat.whatsapp.com/', '')
+if (!q.includes('chat.whatsapp.com')) return reply(mess.error.Iv)
+let code = q.replace('https://chat.whatsapp.com/', '')
 surya.acceptInvite(code)
 textImg(`Sukses bergabung menggunakan tautan itu`)
 }
@@ -15976,7 +15925,6 @@ let uExp = level.getLevelingXp(sender, _level)
 let rExp = 10 * Math.pow(uLevels, 2) + 50 * uLevels + 100
 let uRanks = level.getUserRank(sender, _level)
 let shsts = await surya.getStatus(sender)
-//${(shsts.status === '') ? 'Nothing' : shsts.status}
 let initeks = `
 ❒ *「 Profile User Mecha Botz 」*
 ├ *Nama :* ${pushname}
