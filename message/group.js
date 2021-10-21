@@ -39,8 +39,8 @@ Contoh : *Daftar Surya & 16*
 if (anj.action === 'add'){
 if (anj.participants[0] === surya.user.jid){
 await sleep(2000)
-surya.updatePresence(anj.jid, Presence.composing)
-/*const buttons = [{buttonId: 'verify', buttonText: {displayText: '᥆kᥱ mᥱᥴһᥲ ᑲ᥆𝗍z'}, type: 1}]
+/*surya.updatePresence(anj.jid, Presence.composing)
+const buttons = [{buttonId: 'verify', buttonText: {displayText: '᥆kᥱ mᥱᥴһᥲ ᑲ᥆𝗍z'}, type: 1}]
 const buttonsMessage = {
 contentText: `һᥲі, ᥲkᥙ Mecha Botz
 ᥲkᥙ ᥲძᥲᥣᥲһ ᑲ᥆𝗍 ᥕһᥲ𝗍sᥲ⍴⍴ ⍴іᥒ𝗍ᥲr ᑲᥙᥲ𝗍ᥲᥒ @${Suryaa.split('@')[0]}
@@ -79,11 +79,7 @@ contentText: `
 *├❏ Cowok/Cewek :*
 *├❏ Agama :*
 *├❏ Alasan bergabung :*
-*├❏ Status :*
-*│*
-*├◪* ᥕᥲ ᥴrᥱᥲ𝗍᥆r : @${Suryaa.split('@')[0]}
-*└◪* grᥙ⍴ ᥴrᥱᥲ𝗍᥆r : ${Mecha}
-
+*└❏ Status :*
 
 *Semoga Betah Yaa~*`,
 footerText: `⍴᥆ᥕᥱrᥱძ ᑲу @0
