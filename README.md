@@ -1,5 +1,6 @@
 # Mecha-Botz
-Script Botz WhatsApp Pintar Mecha Botz
+Script Bot WhatsApp Pintar Mecha Botz
+Created Mecha Botz By © Surya
 
 <p align="center">
 <img src="https://github.com/Jabalsurya2105/MechaBotz/blob/main/media/Surya.jpg" alt="MECHA BOT" width="128" height="128"/>
